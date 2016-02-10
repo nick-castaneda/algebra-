@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" >
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Equation Solver</title>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <script src="javascripts/vendor/custom.modernizr.js"></script>
+</head>
+<body>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h1>Equation Solver</h1>
+			<hr />
+		</div>
+	</div>
+
+	<div class="row">
+    <div class="large-3 columns">
+      <h3>Operators</h3>
+      <ul class="button-group radius even-4">
+        <li><a href="#" id="plus" class="button secondary">+</a></li>
+        <li><a href="#" id="minus" class="button secondary">-</a></li>
+        <li><a href="#" id="times" class="button secondary">x</a></li>
+        <li><a href="#" id="divide" class="button secondary">÷</a></li>
+      </ul>
+      <h3>Numbers</h3>
+      <ul class="button-group radius even-5">
+        <li><a href="#" id="five" class="button secondary">5</a></li>
+        <li><a href="#" id="six" class="button secondary">6</a></li>
+        <li><a href="#" id="seven" class="button secondary">7</a></li>
+        <li><a href="#" id="eight" class="button secondary">8</a></li>
+        <li><a href="#" id="nine" class="button secondary">9</a></li>
+      </ul>
+      <ul class="button-group radius even-5">
+        <li><a href="#" id="zero" class="button secondary">0</a></li>
+        <li><a href="#" id="one" class="button secondary">1</a></li>
+        <li><a href="#" id="two" class="button secondary">2</a></li>
+        <li><a href="#" id="three" class="button secondary">3</a></li>
+        <li><a href="#" id="four" class="button secondary">4</a></li>
+      </ul>
+      <h3>Numb Modifiers</h3>
+      <ul class="button-group radius even-5">
+        <li><a href="#" id="plus" class="button secondary">+/-</a></li>
+        <li><a href="#" id="minus" class="button secondary">.</a></li>
+        <li><a href="#" id="times" class="button secondary">/</a></li>
+        <li><a href="#" id="divide" class="button secondary">(</a></li>
+        <li><a href="#" id="divide" class="button secondary">)</a></li>
+      </ul>
+
+    </div>
+
+		<div class="large-9 columns">
+      <form>
+        <input type="text" id="input-box"/>
+        <a href="#" id="eq-submit" class="button round secondary">Post!</a>
+      </form>
+      <div id="equation-box">
+      </div>
+		</div>
+	</div>
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'javascripts/vendor/zepto' : 'javascripts/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+
+  <script src="javascripts/foundation/foundation.js"></script>
+	<script src="javascripts/foundation/foundation.abide.js"></script>
+	<script src="javascripts/foundation/foundation.alerts.js"></script>
+	<script src="javascripts/foundation/foundation.clearing.js"></script>
+	<script src="javascripts/foundation/foundation.cookie.js"></script>
+	<script src="javascripts/foundation/foundation.dropdown.js"></script>
+	<script src="javascripts/foundation/foundation.forms.js"></script>
+	<script src="javascripts/foundation/foundation.interchange.js"></script>
+	<script src="javascripts/foundation/foundation.joyride.js"></script>
+	<script src="javascripts/foundation/foundation.magellan.js"></script>
+	<script src="javascripts/foundation/foundation.orbit.js"></script>
+	<script src="javascripts/foundation/foundation.placeholder.js"></script>
+	<script src="javascripts/foundation/foundation.reveal.js"></script>
+	<script src="javascripts/foundation/foundation.section.js"></script>
+	<script src="javascripts/foundation/foundation.tooltips.js"></script>
+	<script src="javascripts/foundation/foundation.topbar.js"></script>
+
+  <script>
+    $(document).foundation();
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="javascripts/calcLogic.js"></script>
+</body>
+</html>
