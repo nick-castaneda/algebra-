@@ -1,7 +1,7 @@
-$(document).ready(function(){
+// $(document).ready(function(){
 
-  var inputText = "test"
-  $("#input-box").html(inputText);
+  // var inputText = "test"
+  // $("#input-box").html(inputText);
 
 
 
@@ -107,11 +107,13 @@ $(document).ready(function(){
   }
 
   console.log("5x + -3 = -18")
-  console.log(printEquation(convertToDataStructure("5x + -3 = -18")))
+  var test = convertToDataStructure("5x + -3 = -18")
+
+  console.log(printEquation(hitBothSides(test, "+", 10)))
 
   // Do later
   function changeSignsAndCancel(){
 
   }
 
-})
+// })

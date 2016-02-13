@@ -12,14 +12,14 @@
 <body>
 
 	<div class="row">
-		<div class="large-12 columns">
+		<div class="medium-12 columns">
 			<h1>Equation Solver</h1>
 			<hr />
 		</div>
 	</div>
 
 	<div class="row">
-    <div class="large-3 columns">
+    <div class="medium-3 columns">
       <h3>Operators</h3>
       <ul class="button-group radius even-4">
         <li><a href="#" id="plus" class="button secondary">+</a></li>
@@ -53,12 +53,21 @@
 
     </div>
 
-		<div class="large-9 columns">
+		<div class="medium-9 columns">
       <form>
         <input type="text" id="input-box"/>
         <a href="#" id="eq-submit" class="button round secondary">Post!</a>
       </form>
       <div id="equation-box">
+        <div class="row">
+          <div class="medium-2 columns" id="firstTerm"></div>
+          <div class="medium-1 column" id="firstOperation"></div>
+          <div class="medium-2 columns" id="secondTerm"></div>
+          <div class="medium-2 columns" id="equal"></div>
+          <div class="medium-2 columns" id="thirdTerm"></div>
+          <div class="medium-1 column" id="secondOperation"></div>
+          <div class="medium-2 columns" id="fourthTerm"></div>
+        </div>
       </div>
 		</div>
 	</div>

@@ -82,6 +82,13 @@ h3{
   width: 100%;
   border: 3px solid #EC3F8C;
   background-color: white;
+  font-size: 30px;
+  .firstTerm{ background-color: red }
+  .firstOperator{ background-color: green}
+  .secondTerm{ background-color: blue }
+  .thirdTerm{ background-color: yellow }
+  .secondOperator{ background-color: purple}
+  .fourthTerm{ background-color: grey }
 }
 .button.secondary{
   background-color: #EC3F8C;
@@ -89,4 +96,5 @@ h3{
   border-color: #EC3F8C; /* Change! */
   font-family: 'Droid Sans';
 }
+
 
