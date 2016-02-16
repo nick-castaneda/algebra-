@@ -1,0 +1,44 @@
+<section id="home">
+
+  <!-- Row with title and login/register links -->
+  <div class="row" id="title-row">
+    <div class="large-12 columns">
+      <h1>Algebra!</h1>
+      <a href="#" data-reveal-id="loginModal">Login</a>
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <a href="#" data-reveal-id="registerModal">Register</a>
+    </div>
+  </div>
+
+  <!-- Modal for login with form -->
+  <div id="loginModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h2 id="modalTitle">Login</h2>
+    <p class="lead">If you have an acount, login. Otherwise, <a href="#" data-reveal-id="registerModal">Register</a></p>
+    <form>
+
+    </form>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  </div>
+
+  <!-- Modal for registering with form -->
+  <div id="registerModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h2 id="modalTitle">Register</h2>
+    <form>
+
+    </form>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  </div>
+
+  <!-- Row with all the buttons -->
+  <div class="row" id="button-row">
+    <div class="large-3 columns button-collumn">
+      <a ui-sref='equation-solver' class="button round large">Equation Solver</a>
+      <a href="#" ui-sref='expression-simplifier' class="button round large">Expression Simplifier</a>
+    </div>
+    <div class="large-3 columns button-collumn">
+      <a href="#" ui-sref='sat-problems' class="button round large">SAT Questions</a>
+      <a href="#" ui-sref='notes' class="button round large">Algebra Notes and More!</a>
+    </div>
+  </div>
+
+</section>

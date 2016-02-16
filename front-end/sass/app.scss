@@ -57,44 +57,60 @@
 body{
   background-color: #32313B;
 }
-h1{
-  color: #39B1C6;
-  text-align: center;
-  font-family: 'Droid Sans';
+
+#home{
+  #title-row{
+    text-align: center;
+    margin: 50px auto;
+    h1{
+      font-size: 100px;
+      color: #39B1C6;
+    }
+  }
+  #login-modal{}
+  #register-modal{}
 }
-h3{
-  color: #39B1C6;
-  font-family: 'Droid Sans';
-}
-#input-box{
-  width: 80%;
-  height: 50px;
-  border: 3px solid #EC3F8C;
-  margin-bottom: 20px;
-  background-color: white;
-  display: inline-block;
-}
-#eq-submit{
-  float: right;
-}
-#equation-box{
-  height: 500px;
-  width: 100%;
-  border: 3px solid #EC3F8C;
-  background-color: white;
-  font-size: 30px;
-  .firstTerm{ background-color: red }
-  .firstOperator{ background-color: green}
-  .secondTerm{ background-color: blue }
-  .thirdTerm{ background-color: yellow }
-  .secondOperator{ background-color: purple}
-  .fourthTerm{ background-color: grey }
-}
-.button.secondary{
-  background-color: #EC3F8C;
-  color: white;
-  border-color: #EC3F8C; /* Change! */
-  font-family: 'Droid Sans';
+
+#equation-solver{
+  h1{
+    color: #39B1C6;
+    text-align: center;
+    font-family: 'Droid Sans';
+  }
+  h3{
+    color: #39B1C6;
+    font-family: 'Droid Sans';
+  }
+  #input-box{
+    width: 80%;
+    height: 50px;
+    border: 3px solid #EC3F8C;
+    margin-bottom: 20px;
+    background-color: white;
+    display: inline-block;
+  }
+  #eq-submit{
+    float: right;
+  }
+  #equation-box{
+    height: 500px;
+    width: 100%;
+    border: 3px solid #EC3F8C;
+    background-color: white;
+    font-size: 30px;
+    .firstTerm{ background-color: red }
+    .firstOperator{ background-color: green}
+    .secondTerm{ background-color: blue }
+    .thirdTerm{ background-color: yellow }
+    .secondOperator{ background-color: purple}
+    .fourthTerm{ background-color: grey }
+  }
+  .button.secondary{
+    background-color: #EC3F8C;
+    color: white;
+    border-color: #EC3F8C; /* Change! */
+    font-family: 'Droid Sans';
+  }
 }
 
 
