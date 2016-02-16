@@ -54,10 +54,39 @@
 // @import "foundation/components/tooltips";
 // @import "foundation/components/dropdown";
 
+// General Styles //
 body{
   background-color: #32313B;
 }
+.top-bar{
+  background-color: #222930;
+  border-bottom: 4px solid #4EB1BA;
+  margin-bottom: 50px;
+  font-size: 25px;
+  .top-bar-title{
+    float: left;
+    margin-left: 10%;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  #dropdown-list{
+    float: right;
+    margin-right: 10%;
+  }
+  #drop-down-button{
+    font-size: 20px;
+    background-color: #222930;
+  }
+  #move-up{
+    margin-top: -4px;
+  }
+  a{
+    text-decoration: none;
+    color: white;
+  }
+}
 
+// Home Styles //
 #home{
   #title-row{
     text-align: center;
@@ -71,6 +100,7 @@ body{
   #register-modal{}
 }
 
+// Equation Solver Styles //
 #equation-solver{
   h1{
     color: #39B1C6;

@@ -7285,34 +7285,68 @@ a.th {
   max-width: 800px;
 }
 
-/* line 57, ../sass/app.scss */
+/* line 58, ../sass/app.scss */
 body {
   background-color: #32313B;
 }
 
-/* line 62, ../sass/app.scss */
+/* line 61, ../sass/app.scss */
+.top-bar {
+  background-color: #222930;
+  border-bottom: 4px solid #4EB1BA;
+  margin-bottom: 50px;
+  font-size: 25px;
+}
+/* line 66, ../sass/app.scss */
+.top-bar .top-bar-title {
+  float: left;
+  margin-left: 10%;
+  font-size: 30px;
+  font-weight: bold;
+}
+/* line 72, ../sass/app.scss */
+.top-bar #dropdown-list {
+  float: right;
+  margin-right: 10%;
+}
+/* line 76, ../sass/app.scss */
+.top-bar #drop-down-button {
+  font-size: 20px;
+  background-color: #222930;
+}
+/* line 80, ../sass/app.scss */
+.top-bar #move-up {
+  margin-top: -4px;
+}
+/* line 83, ../sass/app.scss */
+.top-bar a {
+  text-decoration: none;
+  color: white;
+}
+
+/* line 91, ../sass/app.scss */
 #home #title-row {
   text-align: center;
   margin: 50px auto;
 }
-/* line 65, ../sass/app.scss */
+/* line 94, ../sass/app.scss */
 #home #title-row h1 {
   font-size: 100px;
   color: #39B1C6;
 }
 
-/* line 75, ../sass/app.scss */
+/* line 105, ../sass/app.scss */
 #equation-solver h1 {
   color: #39B1C6;
   text-align: center;
   font-family: 'Droid Sans';
 }
-/* line 80, ../sass/app.scss */
+/* line 110, ../sass/app.scss */
 #equation-solver h3 {
   color: #39B1C6;
   font-family: 'Droid Sans';
 }
-/* line 84, ../sass/app.scss */
+/* line 114, ../sass/app.scss */
 #equation-solver #input-box {
   width: 80%;
   height: 50px;
@@ -7321,11 +7355,11 @@ body {
   background-color: white;
   display: inline-block;
 }
-/* line 92, ../sass/app.scss */
+/* line 122, ../sass/app.scss */
 #equation-solver #eq-submit {
   float: right;
 }
-/* line 95, ../sass/app.scss */
+/* line 125, ../sass/app.scss */
 #equation-solver #equation-box {
   height: 500px;
   width: 100%;
@@ -7333,31 +7367,31 @@ body {
   background-color: white;
   font-size: 30px;
 }
-/* line 101, ../sass/app.scss */
+/* line 131, ../sass/app.scss */
 #equation-solver #equation-box .firstTerm {
   background-color: red;
 }
-/* line 102, ../sass/app.scss */
+/* line 132, ../sass/app.scss */
 #equation-solver #equation-box .firstOperator {
   background-color: green;
 }
-/* line 103, ../sass/app.scss */
+/* line 133, ../sass/app.scss */
 #equation-solver #equation-box .secondTerm {
   background-color: blue;
 }
-/* line 104, ../sass/app.scss */
+/* line 134, ../sass/app.scss */
 #equation-solver #equation-box .thirdTerm {
   background-color: yellow;
 }
-/* line 105, ../sass/app.scss */
+/* line 135, ../sass/app.scss */
 #equation-solver #equation-box .secondOperator {
   background-color: purple;
 }
-/* line 106, ../sass/app.scss */
+/* line 136, ../sass/app.scss */
 #equation-solver #equation-box .fourthTerm {
   background-color: grey;
 }
-/* line 108, ../sass/app.scss */
+/* line 138, ../sass/app.scss */
 #equation-solver .button.secondary {
   background-color: #EC3F8C;
   color: white;

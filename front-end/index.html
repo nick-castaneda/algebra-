@@ -15,9 +15,26 @@
 </head>
 <body ng-app="algebra">
 
-<section ui-view>
+  <div class="top-bar">
+    <div class="top-bar-title">
+      <a ui-sref='home'>ALGEBRA!</a>
+    </div>
+    <section class="top-bar-section" id="dropdown-list">
+      <ul class="right">
+        <li class="has-dropdown" id="move-up">
+          <a href="#" id="drop-down-button">Modules</a>
+          <ul class="dropdown">
+            <li><a ui-sref="equation-solver">Equation Solver</a></li>
+            <li><a ui-sref="expression-simplifier">Expression Simplifier</a></li>
+            <li><a ui-sref="sat-problems">SAT Problems</a></li>
+            <li><a ui-sref="notes">Notes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </div>
 
-</section>
+  <section ui-view></section>
 
   <script>
   document.write('<script src=' +
