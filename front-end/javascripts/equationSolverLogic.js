@@ -1,9 +1,4 @@
-// $(document).ready(function(){
-
-  // var inputText = "test"
-  // $("#input-box").html(inputText);
-
-
+angular.module('equationSolverLogic', []).factory("solverFunctions", function(){
 
 ////////////////////////////////////////////////////////////////////////
 //                       Equation data structure                      //
@@ -14,6 +9,7 @@
   // Example below: 5x + -3 = -18
   var exampleEquation = [ [ [true, [7, 1], [true, "x"] ], "+", [false, [3, 1], [false] ] ], "=", [ [false, [18, 1], [false] ], "+", [true, [2, 1], [true, "x"] ] ] ]
 
+  return {
 ////////////////////////////////////////////////////////////////////////
 //                      Convert to Data Structure                     //
 ////////////////////////////////////////////////////////////////////////
@@ -22,36 +18,36 @@
   // If the equation doesn't have two sides, return an error. Otherwise,
   // run the splitExpression function on each side and push them and an
   // equal sign to the formattedEquation array and return it
-  function convertToDataStructure(str){
+  convertStringToDataStructure: function(str){
     var formattedEquation;
     if(str.split('=').length != 2) return "error!, add an equal sign and stick to two expressions";
     else {
       formattedEquation = [
-        splitExpression( str.split('=')[0] ),
+        this.splitExpression( str.split('=')[0] ),
         "=",
-        splitExpression( str.split('=')[1] )
+        this.splitExpression( str.split('=')[1] )
       ]
     }
     return formattedEquation;
-  }
+  },
 
   // Takes an expression and converts it to an array of its terms
   // Split the expression at all the spaces and declare an termArray.
   // Run each term in the splitTerm funcion and push it to the termArray
-  function splitExpression(expression){
+  splitExpression: function(expression){
     var expressionArray = expression.split(' ');
     var expressionTermArray = []
-    for(i = expressionArray.length - 1; i >= 0; i--){
+    for(i = 0; i<expressionArray.length; i++){
       if (expressionArray[i].length  !== 0){
-        expressionTermArray.push( splitTerm( expressionArray[i] ) );
+        expressionTermArray.push( this.splitTerm( expressionArray[i] ) );
       }
     }
     return expressionTermArray
-  }
+  },
 
   ///// Make sure it's smart about fractions
   // Takes a term and converts it to an array of its attributes
-  function splitTerm(term){
+  splitTerm: function(term){
     // First trim the whitespace and start with the termArr template
     // If the input is an operator, return it, instead of a term
     term = term.trim()
@@ -74,7 +70,7 @@
     // number and edit the termArr template appropriately
     if(term.length > 0) termArr[1][0] = Number(term);
     return termArr;
-  }
+  },
 
 ////////////////////////////////////////////////////////////////////////
 //                           Print Equation                           //
@@ -82,7 +78,7 @@
 
   // Takes an equation data structure and converts it to an array of
   // term strings
-  function printEquation(equation){
+  printEquation: function(equation){
     var printArray = ['','','','=','','',''];
     // If the side of the equation has only one term, push a "plus" and
     // a zero to the side
@@ -96,14 +92,14 @@
     }
     // If only the second term is zero, print the first term to the
     // third collumn
-    else if(equation[0][2][1][0] == 0) printArray[2] = printTerm(equation[0][0]);
+    else if(equation[0][2][1][0] == 0) printArray[2] = this.printTerm(equation[0][0]);
     // Otherwise print the second term in the first collumn. If the
     // first term is not zero, print the first in the first collumn and
     // the operation in the second collumn.
     else{
-      printArray[2] = printTerm(equation[0][2]);
+      printArray[2] = this.printTerm(equation[0][2]);
       if( equation[0][0][1][0] !== 0 ){
-        printArray[0] = printTerm(equation[0][0]);
+        printArray[0] = this.printTerm(equation[0][0]);
         printArray[1] = equation[0][1]
       }
     }
@@ -115,22 +111,22 @@
     if(equation[2][0][1][0] == 0 && equation[2][2][1][0] == 0) {
       printArray[4] = "0";
     }
-    else if(equation[2][0][1][0] == 0) printArray[4] = printTerm(equation[2][2]);
+    else if(equation[2][0][1][0] == 0) printArray[4] = this.printTerm(equation[2][2]);
     else{
-      printArray[4] = printTerm(equation[2][0]);
+      printArray[4] = this.printTerm(equation[2][0]);
       if( equation[2][2][1][0] !== 0 ){
-        printArray[6] = printTerm(equation[2][2]);
+        printArray[6] = this.printTerm(equation[2][2]);
         printArray[5] = equation[2][1];
       }
     }
     return printArray
-  }
+  },
 
   // Takes a termArray and converts it to a string
   // If the term is negative, add "-" to the string.
   // If theres a variable, add it to the string with its coefficient.
   // Otherwise, just add the number to the string
-  function printTerm(term){
+  printTerm: function(term){
     var termString = ""
     if ( !term[0] ) termString += "-";
     if ( term[2][0] ) {
@@ -138,7 +134,7 @@
       termString += term[2][1];
     } else termString += (term[1][0] / term[1][1])
     return termString
-  }
+  },
 
 ////////////////////////////////////////////////////////////////////////
 //                         Solving Equations                          //
@@ -148,7 +144,8 @@
   // constant to both sides of a equation
   // HitBothSides takes, in an equation, an operator, and a operand.
   // Loop through the terms in each side of the equation
-  function hitBothSides(equation, operator, operand){
+  hitBothSides: function(equation, operator, operand){
+    if( !/[a-zA-Z]/.test(operand) ) operand = Number(operand)
     for(i=0; i<equation.length; i+=2){
       for(j=0; j<equation[i].length; j+=2) {
         // If both the operand and the terms are constants or if both
@@ -190,31 +187,42 @@
     return equation;
   }
 
+  }
+
   // Insert function to check if solved
 
 ////////////////////////////////////////////////////////////////////////
 //                          Tests and Notes                           //
 ////////////////////////////////////////////////////////////////////////
 
-console.log(printEquation(exampleEquation));
-console.log("Subtracting 2x from both sides");
-exampleEquation = hitBothSides(exampleEquation, "-", "2x");
-console.log(printEquation(exampleEquation));
-console.log("Adding 5 to both sides");
-exampleEquation = hitBothSides(exampleEquation, "+", 5)
-console.log(printEquation(exampleEquation));
-console.log("Subtracting 2 from both sides");
-exampleEquation = hitBothSides(exampleEquation, "-", 2)
-console.log(printEquation(exampleEquation));
-console.log("Multiplying both sides by 2");
-exampleEquation = hitBothSides(exampleEquation, "*", 2)
-console.log(printEquation(exampleEquation));
-console.log("Dividing both sides by 10");
-exampleEquation = hitBothSides(exampleEquation, "/", 10)
-console.log(printEquation(exampleEquation));
+// console.log(printEquation(exampleEquation));
+// console.log("Subtracting 2x from both sides");
+// exampleEquation = hitBothSides(exampleEquation, "-", "2x");
+// console.log(printEquation(exampleEquation));
+// console.log("Adding 5 to both sides");
+// exampleEquation = hitBothSides(exampleEquation, "+", 5)
+// console.log(printEquation(exampleEquation));
+// console.log("Subtracting 2 from both sides");
+// exampleEquation = hitBothSides(exampleEquation, "-", 2)
+// console.log(printEquation(exampleEquation));
+// console.log("Multiplying both sides by 2");
+// exampleEquation = hitBothSides(exampleEquation, "*", 2)
+// console.log(printEquation(exampleEquation));
+// console.log("Dividing both sides by 10");
+// exampleEquation = hitBothSides(exampleEquation, "/", 10)
+// console.log(printEquation(exampleEquation));
 
 // Need to deal with fractions and decimals
 // Some Issues with negatives
 // What about no solution?
+
+
+
+
+})
+
+
+
+
 
 // })

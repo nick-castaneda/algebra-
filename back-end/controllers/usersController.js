@@ -12,6 +12,7 @@ module.exports = {
   // JSON renders all the users
   all: function (req, res, next) {
     User.find({}, function (err, users) {
+      res.header('Access-Control-Allow-Origin', "*"); // Is this bad??????
       res.json(users);
     })
   },
@@ -26,6 +27,7 @@ module.exports = {
   // The new flight is saved in the database. If there's an error, it
   // logs, otherwise the method responds with 'flight created'.
   create: function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*"); // Is this bad??????
     var newUser = new User();
     var keys = Object.keys(req.body);
     keys.forEach(function (key) {

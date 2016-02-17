@@ -100,6 +100,13 @@ body{
   #register-modal{}
 }
 
+// Rankings Styles //
+#rankings{
+  table{
+    margin: 0 auto;
+  }
+}
+
 // Equation Solver Styles //
 #equation-solver{
   h1{
@@ -111,7 +118,7 @@ body{
     color: #39B1C6;
     font-family: 'Droid Sans';
   }
-  #input-box{
+  #input-box, #operand-input-box{
     width: 80%;
     height: 50px;
     border: 3px solid #EC3F8C;
@@ -121,6 +128,9 @@ body{
   }
   #eq-submit{
     float: right;
+  }
+  #form-and-box{
+    margin: 0 auto;
   }
   #equation-box{
     height: 500px;
@@ -140,6 +150,45 @@ body{
     color: white;
     border-color: #EC3F8C; /* Change! */
     font-family: 'Droid Sans';
+  }
+  #equation-form{display: block;}
+  #operate-form{display: none;}
+  // Copied for the op buttons
+  $radio-button-color:#5dc755;
+  input[type="radio"] {
+  -webkit-appearance: none;
+  }
+  .row.collapse.foundation-radio-button-row {
+    margin-bottom:1rem; //to get the vert/horz center trick to work well, I have to remove the button margin, so I add it to the row instead.
+  }
+  .foundation-radio-button {
+
+    position:relative;
+    border-right:1px solid white;
+
+    input.button {
+      background:$radio-button-color;
+      &:hover {
+        background:darken($radio-button-color, 5%);
+      }
+      margin-bottom:0;
+      padding:1.25em;
+
+      &[type="radio"]:checked {
+        background:darken($radio-button-color, 10%);
+      }
+
+      + label {
+        font-size:1rem;
+        color: white;
+        position:absolute;
+        top:50%;;
+        left:50%;
+        display:inline-block;
+        width:auto;
+        transform:translate(-50%, -50%);
+      }
+    }
   }
 }
 

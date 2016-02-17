@@ -7336,18 +7336,23 @@ body {
 }
 
 /* line 105, ../sass/app.scss */
+#rankings table {
+  margin: 0 auto;
+}
+
+/* line 112, ../sass/app.scss */
 #equation-solver h1 {
   color: #39B1C6;
   text-align: center;
   font-family: 'Droid Sans';
 }
-/* line 110, ../sass/app.scss */
+/* line 117, ../sass/app.scss */
 #equation-solver h3 {
   color: #39B1C6;
   font-family: 'Droid Sans';
 }
-/* line 114, ../sass/app.scss */
-#equation-solver #input-box {
+/* line 121, ../sass/app.scss */
+#equation-solver #input-box, #equation-solver #operand-input-box {
   width: 80%;
   height: 50px;
   border: 3px solid #EC3F8C;
@@ -7355,11 +7360,15 @@ body {
   background-color: white;
   display: inline-block;
 }
-/* line 122, ../sass/app.scss */
+/* line 129, ../sass/app.scss */
 #equation-solver #eq-submit {
   float: right;
 }
-/* line 125, ../sass/app.scss */
+/* line 132, ../sass/app.scss */
+#equation-solver #form-and-box {
+  margin: 0 auto;
+}
+/* line 135, ../sass/app.scss */
 #equation-solver #equation-box {
   height: 500px;
   width: 100%;
@@ -7367,35 +7376,81 @@ body {
   background-color: white;
   font-size: 30px;
 }
-/* line 131, ../sass/app.scss */
+/* line 141, ../sass/app.scss */
 #equation-solver #equation-box .firstTerm {
   background-color: red;
 }
-/* line 132, ../sass/app.scss */
+/* line 142, ../sass/app.scss */
 #equation-solver #equation-box .firstOperator {
   background-color: green;
 }
-/* line 133, ../sass/app.scss */
+/* line 143, ../sass/app.scss */
 #equation-solver #equation-box .secondTerm {
   background-color: blue;
 }
-/* line 134, ../sass/app.scss */
+/* line 144, ../sass/app.scss */
 #equation-solver #equation-box .thirdTerm {
   background-color: yellow;
 }
-/* line 135, ../sass/app.scss */
+/* line 145, ../sass/app.scss */
 #equation-solver #equation-box .secondOperator {
   background-color: purple;
 }
-/* line 136, ../sass/app.scss */
+/* line 146, ../sass/app.scss */
 #equation-solver #equation-box .fourthTerm {
   background-color: grey;
 }
-/* line 138, ../sass/app.scss */
+/* line 148, ../sass/app.scss */
 #equation-solver .button.secondary {
   background-color: #EC3F8C;
   color: white;
   border-color: #EC3F8C;
   /* Change! */
   font-family: 'Droid Sans';
+}
+/* line 154, ../sass/app.scss */
+#equation-solver #equation-form {
+  display: block;
+}
+/* line 155, ../sass/app.scss */
+#equation-solver #operate-form {
+  display: none;
+}
+/* line 158, ../sass/app.scss */
+#equation-solver input[type="radio"] {
+  -webkit-appearance: none;
+}
+/* line 161, ../sass/app.scss */
+#equation-solver .row.collapse.foundation-radio-button-row {
+  margin-bottom: 1rem;
+}
+/* line 164, ../sass/app.scss */
+#equation-solver .foundation-radio-button {
+  position: relative;
+  border-right: 1px solid white;
+}
+/* line 169, ../sass/app.scss */
+#equation-solver .foundation-radio-button input.button {
+  background: #5dc755;
+  margin-bottom: 0;
+  padding: 1.25em;
+}
+/* line 171, ../sass/app.scss */
+#equation-solver .foundation-radio-button input.button:hover {
+  background: #4bc142;
+}
+/* line 177, ../sass/app.scss */
+#equation-solver .foundation-radio-button input.button[type="radio"]:checked {
+  background: #42af3a;
+}
+/* line 181, ../sass/app.scss */
+#equation-solver .foundation-radio-button input.button + label {
+  font-size: 1rem;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  width: auto;
+  transform: translate(-50%, -50%);
 }

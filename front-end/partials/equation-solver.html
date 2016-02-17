@@ -1,4 +1,4 @@
-<section id="equation-solver">
+<section id="equation-solver" ng-controller="equationController as equation">
 
   <div class="row">
     <div class="large-12 columns">
@@ -8,7 +8,7 @@
   </div>
 
   <div class="row">
-    <div class="large-3 columns">
+<!--     <div class="large-3 columns">
       <h3>Operators</h3>
       <ul class="button-group radius even-4">
         <li><a href="#" id="plus" class="button secondary">+</a></li>
@@ -40,24 +40,47 @@
         <li><a href="#" id="divide" class="button secondary">)</a></li>
       </ul>
 
-    </div>
+    </div> -->
 
-    <div class="large-9 columns">
-      <form>
+    <div class="large-9 large-centered columns" id='form-and-box'>
+
+      <form ng-submit="equation.post()" id="equation-form">
         <input type="text" id="input-box"/>
-        <a href="#" id="eq-submit" class="button round secondary">Post!</a>
+        <input type="submit" id="eq-submit" class="button round secondary"/>
       </form>
+
+      <form ng-submit="equation.operate()" id="operate-form">
+        <div class="row collapse foundation-radio-button-row">
+          <div class="small-3 columns">
+            <div class="foundation-radio-button"><input class="button large expand" type="radio" name="operation" value="+" id="add-op"><label for="add-op">+</label></div>
+          </div>
+          <div class="small-3 columns">
+            <div class="foundation-radio-button"><input class="button large expand" type="radio" name="operation" value="-" id="sub-op"><label for="sub-op">-</label></div>
+          </div>
+          <div class="small-3 columns">
+            <div class="foundation-radio-button"><input class="button large expand" type="radio" name="operation" value="*" id="mult-op"><label for="mult-op">x</label></div>
+          </div>
+          <div class="small-3 columns">
+            <div class="foundation-radio-button"><input class="button large expand" type="radio" name="operation" value="asdfdsaadf" id="div-op"><label for="div-op">/</label></div>
+          </div>
+        </div>
+
+        <input type="text" id="operand-input-box"/>
+        <input type="submit" id="eq-submit" class="button round secondary"/>
+      </form>
+
       <div id="equation-box">
         <div class="row">
-          <div class="large-2 columns" id="firstTerm"><p class="eqPart">4x</p></div>
-          <div class="large-1 column" id="firstOperator"><p class="eqPart">+</p></div>
-          <div class="large-2 columns" id="secondTerm"><p class="eqPart">-2</p></div>
-          <div class="large-2 columns" id="equalSign"><p class="eqPart">=</p></div>
-          <div class="large-2 columns" id="thirdTerm"><p class="eqPart">14x</p></div>
-          <div class="large-1 column" id="secondOperator"><p class="eqPart">-</p></div>
-          <div class="large-2 columns" id="fourthTerm"><p class="eqPart">-18</p></div>
+          <div class="large-2 columns" id="firstTerm"></div>
+          <div class="large-1 column" id="firstOperator"></div>
+          <div class="large-2 columns" id="secondTerm"></div>
+          <div class="large-2 columns" id="equalSign"></div>
+          <div class="large-2 columns" id="thirdTerm"></div>
+          <div class="large-1 column" id="secondOperator"></div>
+          <div class="large-2 columns" id="fourthTerm"></div>
         </div>
       </div>
+
     </div>
   </div>
 

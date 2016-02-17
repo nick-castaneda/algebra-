@@ -1,4 +1,4 @@
-angular.module('algebra', ['ui.router'])
+var app = angular.module('algebra', ['ui.router', 'userService', 'equationSolverLogic'])
   .config(MainRouter)
 
 function MainRouter($stateProvider, $urlRouterProvider){
@@ -6,6 +6,10 @@ function MainRouter($stateProvider, $urlRouterProvider){
     .state('home', {
       url: "/",
       templateUrl: "partials/home.html"
+    })
+    .state('rankings', {
+      url: "/",
+      templateUrl: "partials/rankings.html"
     })
     .state('equation-solver', {
       url: "/",
