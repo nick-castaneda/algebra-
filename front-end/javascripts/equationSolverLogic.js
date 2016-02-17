@@ -1,8 +1,10 @@
+////////////////////////////////////////////////////////////////////////
+//                       Equation Solver Logic                        //
+////////////////////////////////////////////////////////////////////////
+
 angular.module('equationSolverLogic', []).factory("solverFunctions", function(){
 
-////////////////////////////////////////////////////////////////////////
-//                       Equation data structure                      //
-////////////////////////////////////////////////////////////////////////
+  // Equation data structure
   // Equation Level: [expression, equality or inequality, expression]
   // Expression Level: [term 1] or [term 1, plus or minus, term 2]
   // Term Level: [Bool for sign, [int, divisor], Bool for var, [var?, var] ]
@@ -10,6 +12,7 @@ angular.module('equationSolverLogic', []).factory("solverFunctions", function(){
   var exampleEquation = [ [ [true, [7, 1], [true, "x"] ], "+", [false, [3, 1], [false] ] ], "=", [ [false, [18, 1], [false] ], "+", [true, [2, 1], [true, "x"] ] ] ]
 
   return {
+
 ////////////////////////////////////////////////////////////////////////
 //                      Convert to Data Structure                     //
 ////////////////////////////////////////////////////////////////////////
@@ -188,8 +191,7 @@ angular.module('equationSolverLogic', []).factory("solverFunctions", function(){
   }
 
   }
-
-  // Insert function to check if solved
+})
 
 ////////////////////////////////////////////////////////////////////////
 //                          Tests and Notes                           //
@@ -215,14 +217,3 @@ angular.module('equationSolverLogic', []).factory("solverFunctions", function(){
 // Need to deal with fractions and decimals
 // Some Issues with negatives
 // What about no solution?
-
-
-
-
-})
-
-
-
-
-
-// })

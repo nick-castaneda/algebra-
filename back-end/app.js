@@ -14,20 +14,18 @@ mongoose.connect('mongodb://localhost/algebra-users');
 app.use(logger('dev'));
 
 // Allows you to use json and clients like Insomia
-// Second allows you to use url to post, view, delete, etc (rails does
-// this automatically)
 app.use(bodyParser.json());
 
+// Allows images to be hosted by the server
 app.use(express.static('images'));
 
-// configuring our app to handle CORS requests
+// configuring our app to handle CORS requests (Kwak is Gucci)
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization');
   next();
 })
-
 
 // Allows us to use the routes files.
 var routes = require('./config/routes');

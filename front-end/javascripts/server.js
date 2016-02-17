@@ -1,6 +1,14 @@
+////////////////////////////////////////////////////////////////////////
+//                             server.js                              //
+////////////////////////////////////////////////////////////////////////
+
+// Sets up an angular module called 'algebra' and inserts the ui-router,
+// the user and sat services, and the equation logic.
 var app = angular.module('algebra', ['ui.router', 'userService', 'satService', 'equationSolverLogic'])
   .config(MainRouter)
 
+// Routing for the entire application. Each route is set to the root url
+// and is linked to a partial of the same name as the state.
 function MainRouter($stateProvider, $urlRouterProvider){
   $stateProvider
     .state('home', {

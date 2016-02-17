@@ -1,5 +1,9 @@
+////////////////////////////////////////////////////////////////////////
+//                            User Service                            //
+////////////////////////////////////////////////////////////////////////
+
 // Sets up new angular module called 'userService' and a factory called
-// 'userFacory' that accessed the $http library
+// 'userFacory' that accesses the $http library
 angular.module("userService", [])
   .factory("userFactory", function($http){
 
