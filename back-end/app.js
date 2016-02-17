@@ -23,6 +23,8 @@ app.use(bodyParser.json());
 var routes = require('./config/routes');
 app.use('/', routes) // The '/' binds routes to that root
 
+// Seed SAT Problems
+require('./db/seed.js').seedSatProblems();
 
 // Sets the view engine to ejs, now you don't need to include ejs in
 // calling the view pages.

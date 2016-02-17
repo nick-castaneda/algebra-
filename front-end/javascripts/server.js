@@ -1,4 +1,4 @@
-var app = angular.module('algebra', ['ui.router', 'userService', 'equationSolverLogic'])
+var app = angular.module('algebra', ['ui.router', 'userService', 'satService', 'equationSolverLogic'])
   .config(MainRouter)
 
 function MainRouter($stateProvider, $urlRouterProvider){

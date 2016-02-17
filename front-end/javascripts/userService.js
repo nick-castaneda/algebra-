@@ -15,6 +15,5 @@ angular.module("userService", [])
     return $http.post('http://localhost:3000/users/create', userData);
   };
 
-
   return factory;
 })
