@@ -17,7 +17,8 @@ app.use(logger('dev'));
 // Second allows you to use url to post, view, delete, etc (rails does
 // this automatically)
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static('images'));
 
 // configuring our app to handle CORS requests
 app.use(function(req, res, next) {
