@@ -10,10 +10,6 @@ angular.module("userService", [])
   factory.all = function(){
     return $http.get('http://localhost:3000/users');
   }
-  // ?????
-  factory.create = function(userData) {
-    return $http.post('http://localhost:3000/users/create', userData);
-  };
 
   return factory;
 })

@@ -1,5 +1,5 @@
 // Adds controller to the angular app that takes in the userFactory
-app.controller('userController', function(userFactory){
+app.controller('userController', function(userFactory, $http){
 
   var vm = this;
 
@@ -9,14 +9,18 @@ app.controller('userController', function(userFactory){
     vm.users = data;
   })
 
+  // Should be in a factory, but can't make it work
   vm.newUser = {username: "", password: ""}
-
-  vm.register = function(){
-    // var jsonUser = $.param({
-    //   json: JSON.stringify(vm.newUser) // send json user into userFactory
-    // });
-    userFactory.create(vm.newUser).success(function(){
-      alert("registered!");
+  vm.register = function(username, pw){
+    $http({
+      method: 'POST',
+      url: "http://localhost:3000/users/create",
+      data:{
+        username: username,
+        password: pw
+      }
+    }).success(function(){
+      alert('Score')
     })
   }
 

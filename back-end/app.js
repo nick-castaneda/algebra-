@@ -19,6 +19,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
+// configuring our app to handle CORS requests
+app.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization');
+  next();
+})
+
+
 // Allows us to use the routes files.
 var routes = require('./config/routes');
 app.use('/', routes) // The '/' binds routes to that root
