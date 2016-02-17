@@ -8,9 +8,10 @@
     [true, true, [4, 1], [true, "x", 2] ],
     [false, true, [8, 1], [false] ],
     [true, false, [1, 1], [true, "x", 2] ],
-    [false, false, [2, 1], [false] ]
+    [false, false, [2, 1], [false] ],
+    [true, false, [10, 1], [true, "x", 3] ]
   ];
-  var exampleString = "4x^2 - 8 + -x^2 - -2";
+  var exampleString = "4x^2 - 8 + -x^2 - -2 - y";
 
 ////////////////////////////////////////////////////////////////////////
 //                        Printing Expressions                        //
@@ -20,12 +21,18 @@
   // it to array of strings. The function loops through the expression
   // array, runs each term through the printTerm function and pushes it
   // to an array, as long as the term isn't 0.
-  ///// Collapse the array to 1 dimension and return it
   function printExpression(expArr){
     var strArr = [];
     for(i=0; i<expArr.length; i++){
       if(expArr[i][2][0] !== 0) strArr.push( printTerm( expArr[i] ) );
     }
+
+    // Flatten the array to 1 dimension ??? not sure how this works
+    // Remove the first operation and return the string array.
+    strArr = strArr.reduce(function(a, b) {
+        return a.concat(b);
+      }, []);
+    strArr.splice(0, 1);
     return strArr;
   }
 
@@ -55,11 +62,120 @@
     return termStrs
   }
 
+////////////////////////////////////////////////////////////////////////
+//                  Convert String to Data Structure                  //
+////////////////////////////////////////////////////////////////////////
+
+  //
   function convertToDataStructure(expStr){
-    var expArr
+    var termArr = expStr.split(' ');
+    var finalArr = [];
+    for(i=termArr.length - 1; i>=0; i--){
+      if(termArr[i] !== "+" && termArr[i] !== "-"){
+        if(termArr[i][0] !== "-") termArr[i] = "+" + termArr[i];
+      } else termArr[i + 1] = termArr[i] + termArr[i + 1];
+    }
+    for(i=0; i<termArr.length; i+=2){
+      if(i[3] == "0") console.log("0");
+      else if(i == 0) finalArr.push( convertToTermStructure("+" + termArr[i]) );
+      else finalArr.push( convertToTermStructure(termArr[i]) );
+    }
+    return finalArr;
   }
 
+  function convertToTermStructure(term){
+    var termArr = [true, true, [1, 1], [false, "", 1] ];
+    if(term[0] == "-") termArr[0] = false;
+    if(term[1] == "-") termArr[1] = false;
+    term = term.substring(2).split('^');
 
+    if(term.length == 2) termArr[3][2] = Number(term[1]);
+
+    if( /[a-zA-Z]/.test(term[0]) ){
+      termArr[3][0] = true;
+      termArr[3][1] = term[0][term[0].length - 1];
+      term[0] = term[0].slice(0, term[0].length - 1);
+      if(term[0].length > 0) termArr[2][0] = Number(term[0]);
+    } else termArr[2][0] = Number(term[0])
+
+    return termArr;
+  }
+
+////////////////////////////////////////////////////////////////////////
+//                         Combine Like Terms                         //
+////////////////////////////////////////////////////////////////////////
+
+function combineLikeTerms(expression, likeTermArr){
+  var newExpresssion = expression;
+  if(likeTermArr.length < 1) return newExpresssion;
+
+  var constant = 0;
+  if(expression[ likeTermArr[0] ][3][0]){
+    // console.log("hi")
+    // console.log(newExpresssion)
+    var variable = expression[likeTermArr[0]][3][1];
+    var exponent = expression[likeTermArr[0]][3][2];
+    for(i=likeTermArr.length - 1; i >= 0; i--){
+      if(!expression[likeTermArr[i]][3][0]) return newExpresssion;
+      if(expression[likeTermArr[i]][3][1] !== variable || expression[likeTermArr[i]][3][2] !== exponent) return newExpresssion;
+      else{
+        if( (expression[likeTermArr[i]][0] && expression[likeTermArr[i]][1]) || (!expression[likeTermArr[i]][0] && !expression[likeTermArr[i]][1]) ){
+          constant += expression[likeTermArr[i]][2][0]; // Doesn't work for fractions
+        } else constant -= expression[likeTermArr[i]][2][0];
+      }
+    }
+    if (constant > 0) newExpresssion.push([true, true, [constant, 1], [true, variable, exponent] ]);
+    else if (constant < 0) newExpresssion.push([false, true, [constant * -1, 1], [true, variable, exponent] ]);
+  }
+  else {
+    for(i=0; i<likeTermArr.length; i++){
+      if(expression[likeTermArr[i]][3][0]) return newExpresssion;
+      if( (expression[likeTermArr[i]][0] && expression[likeTermArr[i]][1]) || (!expression[likeTermArr[i]][0] && !expression[likeTermArr[i]][1]) ){
+        constant += expression[likeTermArr[i]][2][0]; // Doesn't work for fractions
+      } else constant -= expression[likeTermArr[i]][2][0];
+    }
+    if (constant > 0) newExpresssion.push([true, true, [constant, 1], [false, "", 1] ]);
+    else if (constant < 0) newExpresssion.push([false, true, [constant * -1, 1], [false, "", 1] ]);
+  }
+  for(i=likeTermArr.length - 1; i >= 0; i--){
+    newExpresssion.splice(likeTermArr[i], 1);
+  }
+  return newExpresssion;
+}
 
 // Tests
-console.log(printExpression(exampleExpression));
+// console.log(printExpression(exampleExpression));
+// console.log(convertToDataStructure(exampleString));
+// console.log(combineLikeTerms(exampleExpression, [0,4]))
+// console.log(combineLikeTerms(exampleExpression, [1,3]))
+// console.log(combineLikeTerms(exampleExpression, [0,2]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
