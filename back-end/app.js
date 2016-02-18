@@ -15,6 +15,8 @@ app.use(logger('dev'));
 
 // Allows you to use json and clients like Insomia
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 // Allows images to be hosted by the server
 app.use(express.static('images'));

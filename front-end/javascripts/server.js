@@ -38,3 +38,11 @@ function MainRouter($stateProvider, $urlRouterProvider){
 
   $urlRouterProvider.otherwise("/");
 }
+
+
+
+
+
+
+
+

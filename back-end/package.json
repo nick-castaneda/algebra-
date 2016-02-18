@@ -12,6 +12,7 @@
     "body-parser": "^1.15.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "jsonwebtoken": "^5.7.0",
     "mongoose": "^4.4.3",
     "morgan": "^1.6.1"
   }

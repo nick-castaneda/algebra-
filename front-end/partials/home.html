@@ -20,8 +20,12 @@
   <div id="loginModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
     <h2 id="modalTitle">Login</h2>
     <p class="lead">If you have an acount, login. Otherwise, <a href="#" data-reveal-id="registerModal">Register</a></p>
-    <form>
-
+    <form ng-submit="users.login(users.loginUser.username, users.loginUser.password)">
+      <label for="username">Username:</label>
+      <input type="text" ng-model="users.loginUser.username">
+      <label for="password">Password:</label>
+      <input type="text" ng-model="users.loginUser.password">
+      <button type="submit">Login</button>
     </form>
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>
   </div>
@@ -30,7 +34,9 @@
   <div id="registerModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
     <h2 id="modalTitle">Register</h2>
     <form ng-submit="users.register(users.newUser.username,users.newUser.password)">
+      <label for="username">Username:</label>
       <input ng-model="users.newUser.username">
+      <label for="password">Password:</label>
       <input ng-model="users.newUser.password">
       <button type="submit">Register</button>
     </form>

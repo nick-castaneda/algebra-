@@ -32,4 +32,22 @@ app.controller('userController', function(userFactory, $http){
     })
   }
 
+  // Login
+  vm.loginUser = {username: "", password: ""}
+  vm.login = function (username, pw) {
+    $http({
+      method: 'GET',
+      url: "http://localhost:3000/users/" + username + "/" + pw + "/show"
+    }).success(function(data){
+
+      if(data) console.log(data);
+    })
+  }
+
 })
+
+
+
+
+
+

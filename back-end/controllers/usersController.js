@@ -5,6 +5,13 @@
 // Sets up variable for the user model. Have to go to parent direct.
 var User = require('../models/user');
 
+// // Below for tokens
+// var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
+// var express = require('express'); // Express is the core framework
+// var app = express(); // Function in exress to run application
+// var config = require('../config'); // get our config file
+// app.set('superSecret', config.secret);
+
 // Exports route functions. These are called on the routes page.
 module.exports = {
 
@@ -37,6 +44,42 @@ module.exports = {
     })
   },
 
+  // auth: function(req, res, next){
+  //   // find the user
+  //   User.findOne({
+  //     name: req.body.name
+  //   }, function(err, user) {
+
+  //     if (err) throw err;
+
+  //     if (!user) {
+  //       res.json({ success: false, message: 'Authentication failed. User not found.' });
+  //     } else if (user) {
+
+  //       // check if password matches
+  //       if (user.password != req.body.password) {
+  //         res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+  //       } else {
+
+  //         // if user is found and password is right
+  //         // create a token
+  //         var token = jwt.sign(user, app.get('superSecret'), {
+  //           expiresInMinutes: 1440 // expires in 24 hours
+  //         });
+
+  //         // return the information including token as JSON
+  //         res.json({
+  //           success: true,
+  //           message: 'Enjoy your token!',
+  //           token: token
+  //         });
+  //       }
+
+  //     }
+
+  //   });
+  // },
+
   // API function to delete a specific restaurant.
   // Restaurant.findOneAndRemove() matches the id param in the request
   // to an id in the database and the restaurant with that id is deleted
@@ -52,7 +95,7 @@ module.exports = {
   // matches the id param in the request to an id in the database and
   // the restaurant with that id is rendered through JSON.
   show: function (req, res, next){
-    User.findById({_id: req.params.id}, function (err, user){
+    User.findOne({username: req.params.username, password: req.params.password}, function (err, user){
       res.json(user);
     })
   },

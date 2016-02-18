@@ -9,8 +9,8 @@ var mongoose = require('mongoose')
 var userSchema = mongoose.Schema({
   username: String,
   password: String,
-  age: Number,
-  level: Number
+  points: {type: Number, default: 0},
+  level: {type: Number, default: 1}
 })
 
 // Exports a 'User' model based on the mongo schema, userSchema
