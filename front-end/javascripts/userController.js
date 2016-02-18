@@ -4,7 +4,7 @@
 
 // Adds controller to the angular app that takes in the userFactory, and
 // $http
-app.controller('userController', function(userFactory, $http){
+app.controller('userController', function(userFactory, $http, $scope){
   var vm = this;
 
   // Run the 'all' function from the userFactory and set the response
@@ -33,17 +33,23 @@ app.controller('userController', function(userFactory, $http){
   }
 
   // Login
-  vm.loginUser = {username: "", password: ""}
+  vm.currentUser = {username: ""}
+  $scope.$watch("vm.currentUser")
   vm.login = function (username, pw) {
     $http({
       method: 'GET',
       url: "http://localhost:3000/users/" + username + "/" + pw + "/show"
     }).success(function(data){
-
-      if(data) console.log(data);
+      if(data){
+        vm.currentUser = data;
+        vm.showUserLinks = true;
+      }
     })
   }
 
+  vm.logout = function(){
+    vm.currentUser = {username: ""}
+  }
 })
 
 

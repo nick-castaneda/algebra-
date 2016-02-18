@@ -4,7 +4,7 @@
 
 // Sets up an angular module called 'algebra' and inserts the ui-router,
 // the user and sat services, and the equation logic.
-var app = angular.module('algebra', ['ui.router', 'userService', 'satService', 'equationSolverLogic'])
+var app = angular.module('algebra', ['ui.router', 'userService', 'satService', 'equationSolverLogic', 'expressionSimplifierLogic'])
   .config(MainRouter)
 
 // Routing for the entire application. Each route is set to the root url
@@ -14,10 +14,6 @@ function MainRouter($stateProvider, $urlRouterProvider){
     .state('home', {
       url: "/",
       templateUrl: "partials/home.html"
-    })
-    .state('rankings', {
-      url: "/",
-      templateUrl: "partials/rankings.html"
     })
     .state('equation-solver', {
       url: "/",
@@ -34,6 +30,10 @@ function MainRouter($stateProvider, $urlRouterProvider){
     .state('notes', {
       url: "/",
       templateUrl: "partials/notes.html"
+    })
+    .state('profile', {
+      url: "/",
+      templateUrl: "partials/profile.html"
     })
 
   $urlRouterProvider.otherwise("/");

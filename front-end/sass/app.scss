@@ -58,6 +58,13 @@
 body{
   background-color: #32313B;
 }
+h1{
+  color: #39B1C6;
+  text-align: center;
+}
+hr{
+  border-color: #39B1C6;
+}
 .top-bar{
   background-color: #222930;
   border-bottom: 4px solid #4EB1BA;
@@ -101,19 +108,26 @@ body{
 }
 
 // Rankings Styles //
-#rankings{
+#profile{
+  h3{color: #39B1C6;}
+  h4{color: white}
+  #prof-pic-div{
+    width: 100%;
+    border: 3px solid #39B1C6;
+  }
+  #prof-pic-img{
+    width: 100%;
+    height: 100%;
+  }
   table{
     margin: 0 auto;
+    width: 100%;
+    border: 3px solid #39B1C6;
   }
 }
 
 // Equation Solver Styles //
 #equation-solver{
-  h1{
-    color: #39B1C6;
-    text-align: center;
-    font-family: 'Droid Sans';
-  }
   h3{
     color: #39B1C6;
     font-family: 'Droid Sans';
@@ -153,6 +167,7 @@ body{
   }
   #equation-form{display: block;}
   #operate-form{display: none;}
+
   // Copied for the op buttons
   $radio-button-color:#5dc755;
   input[type="radio"] {
@@ -162,10 +177,8 @@ body{
     margin-bottom:1rem; //to get the vert/horz center trick to work well, I have to remove the button margin, so I add it to the row instead.
   }
   .foundation-radio-button {
-
     position:relative;
     border-right:1px solid white;
-
     input.button {
       background:$radio-button-color;
       &:hover {
@@ -173,11 +186,9 @@ body{
       }
       margin-bottom:0;
       padding:1.25em;
-
       &[type="radio"]:checked {
         background:darken($radio-button-color, 10%);
       }
-
       + label {
         font-size:1rem;
         color: white;
@@ -192,12 +203,17 @@ body{
   }
 }
 
-// Sat Problem Styling
-#sat-problems{
-  h1{
-    text-align: center;
-    color: #39B1C6;
-  }
+// Expression Simplifier
+#expression-simplifier{
+
 }
 
+// Sat Problem Styling
+#sat-problems{
 
+}
+
+// Notes Styling
+#sat-problems{
+
+}

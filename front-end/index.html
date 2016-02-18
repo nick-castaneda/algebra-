@@ -15,6 +15,8 @@
   <script src="javascripts/userService.js"></script>
   <script src="javascripts/equationController.js"></script>
   <script src="javascripts/equationSolverLogic.js"></script>
+  <script src="javascripts/expressionController.js"></script>
+  <script src="javascripts/expressionSimplifierLogic.js"></script>
   <script src="javascripts/satController.js"></script>
   <script src="javascripts/satService.js"></script>
 
@@ -33,15 +35,50 @@
           <a href="#" id="drop-down-button">Modules</a>
           <ul class="dropdown">
             <li><a ui-sref="equation-solver">Equation Solver</a></li>
-            <li><a ui-sref="expression-simplifier">Expression Simplifier</a></li>
+            <li><a ui-sref="sat-problems">Expression Simplifier</a></li>
             <li><a ui-sref="sat-problems">SAT Problems</a></li>
             <li><a ui-sref="notes">Notes</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown" id="move-up" ng-if="users.currentUser.username">
+          <a href="#" id="drop-down-button">{{users.currentUser.username}}</a>
+          <ul class="dropdown">
+            <li><a ui-sref="profile">Profile</a></li>
+            <li><a ng-click="users.logout()">Logout</a></li>
           </ul>
         </li>
       </ul>
     </section>
   </div>
 
+  <!-- Modal for login with form -->
+  <div id="loginModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h2 id="modalTitle">Login</h2>
+    <p class="lead">If you have an acount, login. Otherwise, <a href="#" data-reveal-id="registerModal">Register</a></p>
+    <form ng-submit="users.login(users.loginUser.username, users.loginUser.password)">
+      <label for="username">Username:</label>
+      <input type="text" ng-model="users.loginUser.username">
+      <label for="password">Password:</label>
+      <input type="text" ng-model="users.loginUser.password">
+      <button type="submit" class="closer">Login</button>
+    </form>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  </div>
+
+  <!-- Modal for registering with form -->
+  <div id="registerModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <h2 id="modalTitle">Register</h2>
+    <form ng-submit="users.register(users.newUser.username,users.newUser.password)">
+      <label for="username">Username:</label>
+      <input ng-model="users.newUser.username">
+      <label for="password">Password:</label>
+      <input ng-model="users.newUser.password">
+      <button type="submit">Register</button>
+    </form>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  </div>
+
+  <!-- UI Views -->
   <section ui-view></section>
 
   <script>

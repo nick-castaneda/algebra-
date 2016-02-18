@@ -1,56 +1,30 @@
 <section id="home">
 
-<h3>{{users.test}}</h3>
-<h3>{{users.test2}}</h3>
 
+  <br><br><br>
+  <!-- Row with all the buttons -->
+  <div class="row" class="button-row">
+    <div class="large-3 columns button-collumn">
+      <a ui-sref='equation-solver' class="button round large">Equation Solver</a>
+    </div>
+    <div class="large-3 columns button-collumn">
+      <a ui-sref='expression-simplifier' class="button round large">Expression Simplifier</a>
+    </div>
+  </div>
 
   <!-- Row with title and login/register links -->
   <div class="row" id="title-row">
     <div class="large-12 columns">
-      <h1>Algebra!</h1>
-      <a data-reveal-id="loginModal" class="button small">Login</a>
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      <a data-reveal-id="registerModal" class="button small">Register</a>
-      <br>
-      <a ui-sref='rankings' class="button secondary round medium">Leaderboard</a>
+      <h1 data-reveal-id="loginModal">Algebra!</h1>
     </div>
-  </div>
-
-  <!-- Modal for login with form -->
-  <div id="loginModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-    <h2 id="modalTitle">Login</h2>
-    <p class="lead">If you have an acount, login. Otherwise, <a href="#" data-reveal-id="registerModal">Register</a></p>
-    <form ng-submit="users.login(users.loginUser.username, users.loginUser.password)">
-      <label for="username">Username:</label>
-      <input type="text" ng-model="users.loginUser.username">
-      <label for="password">Password:</label>
-      <input type="text" ng-model="users.loginUser.password">
-      <button type="submit">Login</button>
-    </form>
-    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-  </div>
-
-  <!-- Modal for registering with form -->
-  <div id="registerModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-    <h2 id="modalTitle">Register</h2>
-    <form ng-submit="users.register(users.newUser.username,users.newUser.password)">
-      <label for="username">Username:</label>
-      <input ng-model="users.newUser.username">
-      <label for="password">Password:</label>
-      <input ng-model="users.newUser.password">
-      <button type="submit">Register</button>
-    </form>
-    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
   </div>
 
   <!-- Row with all the buttons -->
-  <div class="row" id="button-row">
-    <div class="large-3 columns button-collumn">
-      <a ui-sref='equation-solver' class="button round large">Equation Solver</a>
-      <a ui-sref='expression-simplifier' class="button round large">Expression Simplifier</a>
-    </div>
+  <div class="row" class="button-row">
     <div class="large-3 columns button-collumn">
       <a ui-sref='sat-problems' class="button round large">SAT Questions</a>
+    </div>
+    <div class="large-3 columns button-collumn">
       <a ui-sref='notes' class="button round large">Algebra Notes and More!</a>
     </div>
   </div>
