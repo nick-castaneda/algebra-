@@ -57,8 +57,8 @@ app.controller('userController', function(userFactory, $http, $scope, $state){
         vm.currentUser = data;
         vm.currentUser.level = Math.floor( Math.log(vm.currentUser.points.equation + vm.currentUser.points.expression + vm.currentUser.points.sat + 1) / Math.log(2) )
         vm.showUserLinks = true;
-        if(!vm.signedIn) $state.go('profile');
         vm.signedIn = true;
+        if(vm.currentUser.level) $state.go('profile');
       }
     })
   }
