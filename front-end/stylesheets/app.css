@@ -7302,81 +7302,88 @@ hr {
 }
 
 /* line 68, ../sass/app.scss */
+.logreg {
+  position: static !important;
+  color: white !important;
+}
+
+/* line 72, ../sass/app.scss */
 .top-bar {
   background-color: #222930;
   border-bottom: 4px solid #4EB1BA;
   margin-bottom: 50px;
   font-size: 25px;
 }
-/* line 73, ../sass/app.scss */
+/* line 77, ../sass/app.scss */
 .top-bar .top-bar-title {
   float: left;
   margin-left: 10%;
   font-size: 30px;
   font-weight: bold;
 }
-/* line 79, ../sass/app.scss */
+/* line 83, ../sass/app.scss */
 .top-bar #dropdown-list {
   float: right;
   margin-right: 10%;
 }
-/* line 83, ../sass/app.scss */
+/* line 87, ../sass/app.scss */
 .top-bar #drop-down-button {
   font-size: 20px;
   background-color: #222930;
 }
-/* line 87, ../sass/app.scss */
+/* line 91, ../sass/app.scss */
 .top-bar #move-up {
   margin-top: -4px;
 }
-/* line 90, ../sass/app.scss */
+/* line 94, ../sass/app.scss */
 .top-bar a {
   text-decoration: none;
   color: white;
 }
 
-/* line 98, ../sass/app.scss */
+/* line 102, ../sass/app.scss */
 #home #title-row {
   text-align: center;
   margin: 50px auto;
 }
-/* line 101, ../sass/app.scss */
+/* line 105, ../sass/app.scss */
 #home #title-row h1 {
   font-size: 100px;
   color: #39B1C6;
+  margin-bottom: 0;
 }
 
-/* line 112, ../sass/app.scss */
+/* line 117, ../sass/app.scss */
 #profile h3 {
   color: #39B1C6;
 }
-/* line 113, ../sass/app.scss */
+/* line 118, ../sass/app.scss */
 #profile h4 {
   color: white;
 }
-/* line 114, ../sass/app.scss */
+/* line 119, ../sass/app.scss */
 #profile #prof-pic-div {
   width: 100%;
   border: 3px solid #39B1C6;
 }
-/* line 118, ../sass/app.scss */
+/* line 123, ../sass/app.scss */
 #profile #prof-pic-img {
   width: 100%;
   height: 100%;
 }
-/* line 122, ../sass/app.scss */
+/* line 127, ../sass/app.scss */
 #profile table {
   margin: 0 auto;
   width: 100%;
   border: 3px solid #39B1C6;
 }
 
-/* line 131, ../sass/app.scss */
+/* line 136, ../sass/app.scss */
 #equation-solver h3 {
   color: #39B1C6;
   font-family: 'Droid Sans';
 }
-/* line 135, ../sass/app.scss */
+/* line 140, ../sass/app.scss */
 #equation-solver #input-box, #equation-solver #operand-input-box {
   width: 80%;
   height: 50px;
@@ -7385,15 +7392,15 @@ hr {
   background-color: white;
   display: inline-block;
 }
-/* line 143, ../sass/app.scss */
+/* line 148, ../sass/app.scss */
 #equation-solver #eq-submit {
   float: right;
 }
-/* line 146, ../sass/app.scss */
+/* line 151, ../sass/app.scss */
 #equation-solver #form-and-box {
   margin: 0 auto;
 }
-/* line 149, ../sass/app.scss */
+/* line 154, ../sass/app.scss */
 #equation-solver #equation-box {
   height: 500px;
   width: 100%;
@@ -7401,31 +7408,31 @@ hr {
   background-color: white;
   font-size: 30px;
 }
-/* line 155, ../sass/app.scss */
+/* line 160, ../sass/app.scss */
 #equation-solver #equation-box .firstTerm {
   background-color: red;
 }
-/* line 156, ../sass/app.scss */
+/* line 161, ../sass/app.scss */
 #equation-solver #equation-box .firstOperator {
   background-color: green;
 }
-/* line 157, ../sass/app.scss */
+/* line 162, ../sass/app.scss */
 #equation-solver #equation-box .secondTerm {
   background-color: blue;
 }
-/* line 158, ../sass/app.scss */
+/* line 163, ../sass/app.scss */
 #equation-solver #equation-box .thirdTerm {
   background-color: yellow;
 }
-/* line 159, ../sass/app.scss */
+/* line 164, ../sass/app.scss */
 #equation-solver #equation-box .secondOperator {
   background-color: purple;
 }
-/* line 160, ../sass/app.scss */
+/* line 165, ../sass/app.scss */
 #equation-solver #equation-box .fourthTerm {
   background-color: grey;
 }
-/* line 162, ../sass/app.scss */
+/* line 167, ../sass/app.scss */
 #equation-solver .button.secondary {
   background-color: #EC3F8C;
   color: white;
@@ -7433,42 +7440,42 @@ hr {
   /* Change! */
   font-family: 'Droid Sans';
 }
-/* line 168, ../sass/app.scss */
+/* line 173, ../sass/app.scss */
 #equation-solver #equation-form {
   display: block;
 }
-/* line 169, ../sass/app.scss */
+/* line 174, ../sass/app.scss */
 #equation-solver #operate-form {
   display: none;
 }
-/* line 173, ../sass/app.scss */
+/* line 178, ../sass/app.scss */
 #equation-solver input[type="radio"] {
   -webkit-appearance: none;
 }
-/* line 176, ../sass/app.scss */
+/* line 181, ../sass/app.scss */
 #equation-solver .row.collapse.foundation-radio-button-row {
   margin-bottom: 1rem;
 }
-/* line 179, ../sass/app.scss */
+/* line 184, ../sass/app.scss */
 #equation-solver .foundation-radio-button {
   position: relative;
   border-right: 1px solid white;
 }
-/* line 182, ../sass/app.scss */
+/* line 187, ../sass/app.scss */
 #equation-solver .foundation-radio-button input.button {
   background: #5dc755;
   margin-bottom: 0;
   padding: 1.25em;
 }
-/* line 184, ../sass/app.scss */
+/* line 189, ../sass/app.scss */
 #equation-solver .foundation-radio-button input.button:hover {
   background: #4bc142;
 }
-/* line 189, ../sass/app.scss */
+/* line 194, ../sass/app.scss */
 #equation-solver .foundation-radio-button input.button[type="radio"]:checked {
   background: #42af3a;
 }
-/* line 192, ../sass/app.scss */
+/* line 197, ../sass/app.scss */
 #equation-solver .foundation-radio-button input.button + label {
   font-size: 1rem;
   color: white;
@@ -7478,4 +7485,40 @@ hr {
   display: inline-block;
   width: auto;
   transform: translate(-50%, -50%);
+}
+
+/* line 213, ../sass/app.scss */
+#expression-simplifier #exp-input-box {
+  border: 3px solid #EC3F8C;
+}
+/* line 216, ../sass/app.scss */
+#expression-simplifier #expression-form {
+  display: block;
+}
+/* line 219, ../sass/app.scss */
+#expression-simplifier #combine-holder {
+  display: none;
+}
+/* line 222, ../sass/app.scss */
+#expression-simplifier #expression-holder {
+  overflow: auto;
+  display: none;
+}
+/* line 225, ../sass/app.scss */
+#expression-simplifier #expression-holder .term {
+  background-color: #39B1C6;
+  border: 2px solid white;
+  color: white;
+  text-align: center;
+  margin: 25px;
+  display: inline-block;
+}
+/* line 232, ../sass/app.scss */
+#expression-simplifier #expression-holder .term .term-text {
+  font-size: 25px;
+  margin: 10px 20px;
+}
+/* line 237, ../sass/app.scss */
+#expression-simplifier #expression-holder .highlighted {
+  border: 2px solid #EC3F8C;
 }

@@ -65,6 +65,10 @@ h1{
 hr{
   border-color: #39B1C6;
 }
+.logreg{
+  position: static !important;
+  color: white !important;
+}
 .top-bar{
   background-color: #222930;
   border-bottom: 4px solid #4EB1BA;
@@ -101,6 +105,7 @@ hr{
     h1{
       font-size: 100px;
       color: #39B1C6;
+      margin-bottom: 0;
     }
   }
   #login-modal{}
@@ -205,7 +210,32 @@ hr{
 
 // Expression Simplifier
 #expression-simplifier{
-
+  #exp-input-box{
+    border: 3px solid #EC3F8C;
+  }
+  #expression-form{
+    display: block;
+  }
+  #combine-holder{
+    display: none;
+  }
+  #expression-holder{
+    overflow: auto;
+    display: none;
+    .term{
+      background-color: #39B1C6;
+      border: 2px solid white;
+      color: white;
+      text-align: center;
+      margin: 25px;
+      display: inline-block;
+      .term-text{
+        font-size: 25px;
+        margin: 10px 20px;
+      }
+    }
+    .highlighted{ border: 2px solid #EC3F8C;}
+  }
 }
 
 // Sat Problem Styling

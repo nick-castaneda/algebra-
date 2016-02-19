@@ -1,18 +1,31 @@
-var example = [ [ [true, [0, 1], [true, "x"] ], "+", [true, [3, 1], [false] ] ], "=", [ [false, [1, 1], [true, "y"] ], "+", [true, [0, 1], [true, "x"] ] ] ]
+var example = [
+    [true, true, [4, 1], [true, "x", 2] ],
+    [false, true, [8, 1], [false] ],
+    [true, false, [1, 1], [true, "x", 2] ],
+    [false, false, [2, 1], [false] ],
+    [true, false, [10, 1], [true, "x", 3] ]
+  ]
+var example2 = [
+    [true, true, [4, 1], [true, "x", 2] ],
+    [false, true, [8, 1], [false] ],
+    [true, false, [10, 1], [true, "x", 3] ]
+  ]
 
-function test(equation){
-    var isolate = [false, false, false];
-    if(equation[0][2][2][0] && equation[0][2][1][1] == 1 && equation[0][2][1][1] && equation[1]) isolate[0] = true;
-    if(equation[2][0][2][0] && equation[2][0][1][1] == 1 && equation[2][0][1][1]) isolate[0] = true;
+function test(expression){
+  var combined = [  ];
 
-    if(!equation[0][2][2][0]) isolate[1] = true;
-    if(!equation[2][0][2][0]) isolate[1] = true;
+  if(expression[0][3][0]) combined.push( [ expression[0][3][1], expression[0][3][2] ] );
+  else combined.push( ["const", 1 ] );
 
-    if(equation[0][0][1][0] == 0 && equation[2][2][1][0] == 0) isolate[2] = true
-
-    console.log(isolate)
-    if (isolate[0] && isolate[1] && isolate[2]) return true
-    else return false;
+  for(i=1; i<expression.length; i++){
+    for(j=0; j<combined.length; j++){
+      if( expression[i][3][1] == combined[j][0] && expression[i][3][2] == combined[j][1] ) return false;
+    }
+    if(expression[i][3][0]) combined.push( [ expression[i][3][1], expression[i][3][2] ] );
+    else combined.push( ["const", 1 ] );
   }
+  return true;
+}
 
 console.log(test(example))
+console.log(test(example2))

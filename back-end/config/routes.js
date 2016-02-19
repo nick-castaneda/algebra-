@@ -10,6 +10,27 @@ var router = express.Router();
 var UsersController = require('../controllers/usersController');
 var SATController = require('../controllers/satController')
 
+
+
+router.route('/users/').get(UsersController.all);
+router.route('/users/create').post(UsersController.create);
+router.route('/users/:id/delete').delete(UsersController.delete);
+router.route('/users/:username/:password/show').get(UsersController.show);
+router.route('/users/:username/edit').put(UsersController.edit);
+
+// apply the routes to our application with the prefix /api
+// app.use('/users', router);
+
+// SAT Problem Routes
+router.route('/sat/').get(SATController.all);
+router.route('/sat/:number/show').get(SATController.show);
+router.route('/sat/:id/delete').delete(SATController.delete);
+
+
+// Exports route so that other pages can grab this file
+module.exports = router
+
+
 // // Below for tokens
 // var app = express(); // Function in exress to run application
 // var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
@@ -48,22 +69,3 @@ var SATController = require('../controllers/satController')
 
 //   }
 // });
-
-
-router.route('/users/').get(UsersController.all);
-router.route('/users/create').post(UsersController.create);
-router.route('/users/:id/delete').delete(UsersController.delete);
-router.route('/users/:username/:password/show').get(UsersController.show);
-router.route('/users/:id/edit').put(UsersController.edit);
-
-// apply the routes to our application with the prefix /api
-// app.use('/users', router);
-
-// SAT Problem Routes
-router.route('/sat/').get(SATController.all);
-router.route('/sat/:number/show').get(SATController.show);
-router.route('/sat/:id/delete').delete(SATController.delete);
-
-
-// Exports route so that other pages can grab this file
-module.exports = router

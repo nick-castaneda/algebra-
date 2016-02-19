@@ -27,7 +27,7 @@ angular.module('expressionSimplifierLogic', []).factory("simplifyFunctions", fun
   printExpression: function(expArr){
     var strArr = [];
     for(i=0; i<expArr.length; i++){
-      if(expArr[i][2][0] !== 0) strArr.push( printTerm( expArr[i] ) );
+      if(expArr[i][2][0] !== 0) strArr.push( this.printTerm( expArr[i] ) );
     }
 
     // Flatten the array to 1 dimension ??? not sure how this works
@@ -80,8 +80,8 @@ angular.module('expressionSimplifierLogic', []).factory("simplifyFunctions", fun
     }
     for(i=0; i<termArr.length; i+=2){
       if(i[3] == "0") console.log("0");
-      else if(i == 0) finalArr.push( convertToTermStructure("+" + termArr[i]) );
-      else finalArr.push( convertToTermStructure(termArr[i]) );
+      else if(i == 0) finalArr.push( this.convertToTermStructure("+" + termArr[i]) );
+      else finalArr.push( this.convertToTermStructure(termArr[i]) );
     }
     return finalArr;
   },
@@ -109,6 +109,8 @@ angular.module('expressionSimplifierLogic', []).factory("simplifyFunctions", fun
 ////////////////////////////////////////////////////////////////////////
 
   combineLikeTerms: function(expression, likeTermArr){
+    // Eventually cut out all the zeros first
+
     var newExpresssion = expression;
     if(likeTermArr.length < 1) return newExpresssion;
 
@@ -144,8 +146,27 @@ angular.module('expressionSimplifierLogic', []).factory("simplifyFunctions", fun
       newExpresssion.splice(likeTermArr[i], 1);
     }
     return newExpresssion;
-  }
+  },
 
+////////////////////////////////////////////////////////////////////////
+//                              Check It                              //
+////////////////////////////////////////////////////////////////////////
+
+  check: function(expression){
+    var combined = [  ];
+
+    if(expression[0][3][0]) combined.push( [ expression[0][3][1], expression[0][3][2] ] );
+    else combined.push( ["const", 1 ] );
+
+    for(i=1; i<expression.length; i++){
+      for(j=0; j<combined.length; j++){
+        if( expression[i][3][1] == combined[j][0] && expression[i][3][2] == combined[j][1] ) return false;
+      }
+      if(expression[i][3][0]) combined.push( [ expression[i][3][1], expression[i][3][2] ] );
+      else combined.push( ["const", 1 ] );
+    }
+    return true;
+  }
 
   }
 

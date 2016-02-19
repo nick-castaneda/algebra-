@@ -4,7 +4,7 @@
 
 // Adds controller to the angular app that takes in the userFactory, and
 // $http
-app.controller('userController', function(userFactory, $http, $scope){
+app.controller('userController', function(userFactory, $http, $scope, $state){
   var vm = this;
 
   // Run the 'all' function from the userFactory and set the response
@@ -18,17 +18,22 @@ app.controller('userController', function(userFactory, $http, $scope){
   // When the register form is submited, the attributes are passed to
   // the backend api through the post method.
   ////// change success callback function
-  vm.newUser = {username: "", password: ""}
-  vm.register = function(username, pw){
+  vm.newUser = {username: "", password: "", url: ""}
+  vm.register = function(username, pw, url){
     $http({
       method: 'POST',
       url: "http://localhost:3000/users/create",
       data:{
         username: username,
-        password: pw
+        password: pw,
+        picUrl: url
       }
     }).success(function(){
-      alert('Score')
+      vm.login(username, pw);
+      userFactory.all().success(function(data){
+        vm.users = data;
+      });
+      $state.go('profile');
     })
   }
 
@@ -43,12 +48,30 @@ app.controller('userController', function(userFactory, $http, $scope){
       if(data){
         vm.currentUser = data;
         vm.showUserLinks = true;
+        $state.go('profile');
+      }
+    })
+  }
+
+  vm.raiseScore = function (category) {
+    $http({
+      method: 'PUT',
+      url: "http://localhost:3000/users/" + username + "/edit",
+      data:{
+        // category
+      }
+    }).success(function(data){
+      if(data){
+        vm.currentUser = data;
+        vm.showUserLinks = true;
+        $state.go('profile');
       }
     })
   }
 
   vm.logout = function(){
-    vm.currentUser = {username: ""}
+    vm.currentUser = {username: ""};
+    $state.go('home')
   }
 })
 

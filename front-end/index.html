@@ -35,7 +35,7 @@
           <a href="#" id="drop-down-button">Modules</a>
           <ul class="dropdown">
             <li><a ui-sref="equation-solver">Equation Solver</a></li>
-            <li><a ui-sref="sat-problems">Expression Simplifier</a></li>
+            <li><a ui-sref="expression-simplifier">Expression Simplifier</a></li>
             <li><a ui-sref="sat-problems">SAT Problems</a></li>
             <li><a ui-sref="notes">Notes</a></li>
           </ul>
@@ -60,7 +60,9 @@
       <input type="text" ng-model="users.loginUser.username">
       <label for="password">Password:</label>
       <input type="text" ng-model="users.loginUser.password">
-      <button type="submit" class="closer">Login</button>
+      <!-- <div class="logreg close-reveal-modal"> -->
+        <button type="submit">Login</button>
+      <!-- </div> -->
     </form>
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>
   </div>
@@ -68,12 +70,16 @@
   <!-- Modal for registering with form -->
   <div id="registerModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
     <h2 id="modalTitle">Register</h2>
-    <form ng-submit="users.register(users.newUser.username,users.newUser.password)">
+    <form ng-submit="users.register(users.newUser.username,users.newUser.password,users.newUser.url)">
       <label for="username">Username:</label>
       <input ng-model="users.newUser.username">
       <label for="password">Password:</label>
       <input ng-model="users.newUser.password">
-      <button type="submit">Register</button>
+      <label for="url">Profile Pic URL:</label>
+      <input type="text" ng-model="users.newUser.url">
+      <!-- <div class="logreg close-reveal-modal"> -->
+        <button type="submit" class="logreg close-reveal-modal">Register</button>
+      <!-- </div> -->
     </form>
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>
   </div>
@@ -106,6 +112,9 @@
 
   <script>
     $(document).foundation();
+
+
+
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </body>
