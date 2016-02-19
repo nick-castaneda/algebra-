@@ -68,6 +68,7 @@ angular.module('equationSolverLogic', []).factory("solverFunctions", function(){
       termArr[2][0] = true;
       termArr[2].push(term[term.length - 1]);
       term = term.substring(0, term.length - 1);
+      if(term.length == 0) termArr[1][0] = 1;
     }
     // All that's left in the string is the number, so make it a js
     // number and edit the termArr template appropriately
@@ -195,16 +196,27 @@ angular.module('equationSolverLogic', []).factory("solverFunctions", function(){
 ////////////////////////////////////////////////////////////////////////
 
   check: function(equation){
-    var isolate = [false, false, false];
-    if(equation[0][2][2][0] && equation[0][2][1][1] == 1 && equation[0][2][1][1] && equation[1]) isolate[0] = true;
-    if(equation[2][0][2][0] && equation[2][0][1][1] == 1 && equation[2][0][1][1]) isolate[0] = true;
+    var leftZeroCount = 0;
+    var rightZeroCount = 0;
+    var isolateVarCount = 0;
+    var constantCount = 0;
 
-    if(!equation[0][2][2][0]) isolate[1] = true;
-    if(!equation[2][0][2][0]) isolate[1] = true;
+    if(equation[0][0][1][0] == 0) leftZeroCount += 1;
+    if(equation[0][2][1][0] == 0) leftZeroCount += 1;
+    if(equation[2][0][1][0] == 0) rightZeroCount += 1;
+    if(equation[2][2][1][0] == 0) rightZeroCount += 1;
 
-    if(equation[0][0][1][0] == 0 && equation[2][2][1][0] == 0) isolate[2] = true
+    if(equation[0][0][1][0] == 1 && equation[0][0][2][0]) isolateVarCount += 1;
+    if(equation[0][2][1][0] == 1 && equation[0][2][2][0]) isolateVarCount += 1;
+    if(equation[2][0][1][0] == 1 && equation[2][0][2][0]) isolateVarCount += 1;
+    if(equation[2][2][1][0] == 1 && equation[2][2][2][0]) isolateVarCount += 1;
 
-    if (isolate[0] && isolate[1] && isolate[2]) return true
+    if(equation[0][0][1][0] !== 0 && !equation[0][0][2][0]) constantCount += 1;
+    if(equation[0][2][1][0] !== 0 && !equation[0][2][2][0]) constantCount += 1;
+    if(equation[2][0][1][0] !== 0 && !equation[2][0][2][0]) constantCount += 1;
+    if(equation[2][2][1][0] !== 0 && !equation[2][2][2][0]) constantCount += 1;
+
+    if(leftZeroCount == 1 && rightZeroCount == 1 && isolateVarCount == 1 && constantCount == 1) return true;
     else return false;
   }
 

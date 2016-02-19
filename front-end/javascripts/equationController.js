@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////
 
 // Set an Equation controller that takes in the solver functions factory
-app.controller('equationController', function(solverFunctions){
+app.controller('equationController', function(solverFunctions, $scope){
   var vm = this;
 
   // When the user submits the post-equation form, if there is no
@@ -39,8 +39,16 @@ app.controller('equationController', function(solverFunctions){
     var Operation = $("input:radio[name ='operation']:checked").val()
     var Operand = $('#operand-input-box').val()
     var Equation = vm.currentEq;
+
     vm.currentEq = solverFunctions.hitBothSides(Equation, Operation, Operand);
     vm.post()
+
+    if(solverFunctions.check(vm.currentEq)){
+      alert("Great Job ... Equation Solved");
+      $scope.$emit('raise-eq-score');
+    } else{console.log(vm.currentEq)}
+
+
   }
 
 })

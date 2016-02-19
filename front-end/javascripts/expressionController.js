@@ -47,11 +47,9 @@ app.controller('expressionController', function(simplifyFunctions, $scope){
 
     vm.expressionStringArray = simplifyFunctions.printExpression(vm.currentExp);
     vm.print();
-    // for(i=0; i<(vm.currentExp.length * 2) - 1; i++){
-    //   vm.expressionStringArray.push( simplifyFunctions.printExpression(vm.currentExp)[i] );
-    // }
+
     if(simplifyFunctions.check(vm.currentExp)){
-      alert("fuck yeah");
+      alert("Great Job ... Expression Simplified");
       $scope.$emit('raise-exp-score')
     }
 

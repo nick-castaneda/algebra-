@@ -71,7 +71,10 @@ app.controller('userController', function(userFactory, $http, $scope, $state){
         method: 'PUT',
         url: "http://localhost:3000/users/" + vm.currentUser.username + "/edit",
         data:{
-          points: { expression: newScore }
+          points: {
+            expression: newScore,
+            equation: vm.currentUser.points.equation
+          }
         }
       }).success(function(data){
 
@@ -86,6 +89,34 @@ app.controller('userController', function(userFactory, $http, $scope, $state){
     }
 
   })
+
+  $scope.$on('raise-eq-score', function(event, args) {
+    if(vm.currentUser.username){
+
+      var newScore = vm.currentUser.points.equation + 1
+      $http({
+        method: 'PUT',
+        url: "http://localhost:3000/users/" + vm.currentUser.username + "/edit",
+        data:{
+          points: {
+            equation: newScore,
+            expression: vm.currentUser.points.expression
+          }
+        }
+      }).success(function(data){
+        console.log("success")
+        userFactory.all().success(function(data){
+          vm.users = data;
+          for(i=0; i<vm.users.length; i++){
+            vm.users[i].level = Math.floor( Math.log(vm.users[i].points.equation + vm.users[i].points.expression + vm.users[i].points.sat + 1) / Math.log(2) )
+          }
+        })
+        vm.login(vm.currentUser.username, vm.currentUser.password);
+      })
+    }
+
+  })
+
 
   vm.logout = function(){
     vm.currentUser = {username: ""};
