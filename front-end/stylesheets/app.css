@@ -7377,13 +7377,18 @@ hr {
   width: 100%;
   border: 3px solid #39B1C6;
 }
+/* line 131, ../sass/app.scss */
+#profile table th {
+  text-align: center;
+  border-bottom: 2px solid black;
+}
 
-/* line 136, ../sass/app.scss */
+/* line 140, ../sass/app.scss */
 #equation-solver h3 {
   color: #39B1C6;
   font-family: 'Droid Sans';
 }
-/* line 140, ../sass/app.scss */
+/* line 144, ../sass/app.scss */
 #equation-solver #input-box, #equation-solver #operand-input-box {
   width: 80%;
   height: 50px;
@@ -7392,15 +7397,15 @@ hr {
   background-color: white;
   display: inline-block;
 }
-/* line 148, ../sass/app.scss */
+/* line 152, ../sass/app.scss */
 #equation-solver #eq-submit {
   float: right;
 }
-/* line 151, ../sass/app.scss */
+/* line 155, ../sass/app.scss */
 #equation-solver #form-and-box {
   margin: 0 auto;
 }
-/* line 154, ../sass/app.scss */
+/* line 158, ../sass/app.scss */
 #equation-solver #equation-box {
   height: 500px;
   width: 100%;
@@ -7408,31 +7413,31 @@ hr {
   background-color: white;
   font-size: 30px;
 }
-/* line 160, ../sass/app.scss */
+/* line 164, ../sass/app.scss */
 #equation-solver #equation-box .firstTerm {
   background-color: red;
 }
-/* line 161, ../sass/app.scss */
+/* line 165, ../sass/app.scss */
 #equation-solver #equation-box .firstOperator {
   background-color: green;
 }
-/* line 162, ../sass/app.scss */
+/* line 166, ../sass/app.scss */
 #equation-solver #equation-box .secondTerm {
   background-color: blue;
 }
-/* line 163, ../sass/app.scss */
+/* line 167, ../sass/app.scss */
 #equation-solver #equation-box .thirdTerm {
   background-color: yellow;
 }
-/* line 164, ../sass/app.scss */
+/* line 168, ../sass/app.scss */
 #equation-solver #equation-box .secondOperator {
   background-color: purple;
 }
-/* line 165, ../sass/app.scss */
+/* line 169, ../sass/app.scss */
 #equation-solver #equation-box .fourthTerm {
   background-color: grey;
 }
-/* line 167, ../sass/app.scss */
+/* line 171, ../sass/app.scss */
 #equation-solver .button.secondary {
   background-color: #EC3F8C;
   color: white;
@@ -7440,42 +7445,42 @@ hr {
   /* Change! */
   font-family: 'Droid Sans';
 }
-/* line 173, ../sass/app.scss */
+/* line 177, ../sass/app.scss */
 #equation-solver #equation-form {
   display: block;
 }
-/* line 174, ../sass/app.scss */
+/* line 178, ../sass/app.scss */
 #equation-solver #operate-form {
   display: none;
 }
-/* line 178, ../sass/app.scss */
+/* line 182, ../sass/app.scss */
 #equation-solver input[type="radio"] {
   -webkit-appearance: none;
 }
-/* line 181, ../sass/app.scss */
+/* line 185, ../sass/app.scss */
 #equation-solver .row.collapse.foundation-radio-button-row {
   margin-bottom: 1rem;
 }
-/* line 184, ../sass/app.scss */
+/* line 188, ../sass/app.scss */
 #equation-solver .foundation-radio-button {
   position: relative;
   border-right: 1px solid white;
 }
-/* line 187, ../sass/app.scss */
+/* line 191, ../sass/app.scss */
 #equation-solver .foundation-radio-button input.button {
   background: #5dc755;
   margin-bottom: 0;
   padding: 1.25em;
 }
-/* line 189, ../sass/app.scss */
+/* line 193, ../sass/app.scss */
 #equation-solver .foundation-radio-button input.button:hover {
   background: #4bc142;
 }
-/* line 194, ../sass/app.scss */
+/* line 198, ../sass/app.scss */
 #equation-solver .foundation-radio-button input.button[type="radio"]:checked {
   background: #42af3a;
 }
-/* line 197, ../sass/app.scss */
+/* line 201, ../sass/app.scss */
 #equation-solver .foundation-radio-button input.button + label {
   font-size: 1rem;
   color: white;
@@ -7487,24 +7492,24 @@ hr {
   transform: translate(-50%, -50%);
 }
 
-/* line 213, ../sass/app.scss */
+/* line 217, ../sass/app.scss */
 #expression-simplifier #exp-input-box {
   border: 3px solid #EC3F8C;
 }
-/* line 216, ../sass/app.scss */
+/* line 220, ../sass/app.scss */
 #expression-simplifier #expression-form {
   display: block;
 }
-/* line 219, ../sass/app.scss */
+/* line 223, ../sass/app.scss */
 #expression-simplifier #combine-holder {
   display: none;
 }
-/* line 222, ../sass/app.scss */
+/* line 226, ../sass/app.scss */
 #expression-simplifier #expression-holder {
   overflow: auto;
   display: none;
 }
-/* line 225, ../sass/app.scss */
+/* line 229, ../sass/app.scss */
 #expression-simplifier #expression-holder .term {
   background-color: #39B1C6;
   border: 2px solid white;
@@ -7513,12 +7518,12 @@ hr {
   margin: 25px;
   display: inline-block;
 }
-/* line 232, ../sass/app.scss */
+/* line 236, ../sass/app.scss */
 #expression-simplifier #expression-holder .term .term-text {
   font-size: 25px;
   margin: 10px 20px;
 }
-/* line 237, ../sass/app.scss */
+/* line 241, ../sass/app.scss */
 #expression-simplifier #expression-holder .highlighted {
   border: 2px solid #EC3F8C;
 }

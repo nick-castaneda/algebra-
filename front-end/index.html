@@ -47,6 +47,13 @@
             <li><a ng-click="users.logout()">Logout</a></li>
           </ul>
         </li>
+        <li class="has-dropdown" id="move-up" ng-if="!users.currentUser.username">
+          <a href="#" data-reveal-id="loginModal" id="drop-down-button">Login</a>
+          <ul class="dropdown">
+<!--             <li><a ui-sref="profile">Profile</a></li>
+            <li><a ng-click="users.logout()">Logout</a></li> -->
+          </ul>
+        </li>
       </ul>
     </section>
   </div>
@@ -59,7 +66,7 @@
       <label for="username">Username:</label>
       <input type="text" ng-model="users.loginUser.username">
       <label for="password">Password:</label>
-      <input type="text" ng-model="users.loginUser.password">
+      <input type="password" ng-model="users.loginUser.password">
       <!-- <div class="logreg close-reveal-modal"> -->
         <button type="submit">Login</button>
       <!-- </div> -->
@@ -70,15 +77,15 @@
   <!-- Modal for registering with form -->
   <div id="registerModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
     <h2 id="modalTitle">Register</h2>
-    <form ng-submit="users.register(users.newUser.username,users.newUser.password,users.newUser.url)">
+    <form ng-submit="users.register(users.newUser.username, users.newUser.password, users.newUser.url)">
       <label for="username">Username:</label>
       <input ng-model="users.newUser.username">
       <label for="password">Password:</label>
-      <input ng-model="users.newUser.password">
+      <input type="password" ng-model="users.newUser.password">
       <label for="url">Profile Pic URL:</label>
       <input type="text" ng-model="users.newUser.url">
       <!-- <div class="logreg close-reveal-modal"> -->
-        <button type="submit" class="logreg close-reveal-modal">Register</button>
+        <button type="submit">Register</button>
       <!-- </div> -->
     </form>
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>

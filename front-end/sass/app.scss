@@ -128,6 +128,10 @@ hr{
     margin: 0 auto;
     width: 100%;
     border: 3px solid #39B1C6;
+    th{
+      text-align: center;
+      border-bottom: 2px solid black;
+    }
   }
 }
 
