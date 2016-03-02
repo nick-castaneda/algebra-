@@ -26,7 +26,7 @@ app.controller('userController', function(userFactory, $http, $scope, $state){
       console.log("hi");
     $http({
       method: 'POST',
-      url: "http://localhost:3000/users/create",
+      url: "http://ec2-52-36-162-16.us-west-2.compute.amazonaws.com:3000/users/create",
       data:{
         username: username,
         password: pw,
@@ -51,7 +51,7 @@ app.controller('userController', function(userFactory, $http, $scope, $state){
   vm.login = function (username, pw) {
     $http({
       method: 'GET',
-      url: "http://localhost:3000/users/" + username + "/" + pw + "/show"
+      url: "http://ec2-52-36-162-16.us-west-2.compute.amazonaws.com:3000/users/" + username + "/" + pw + "/show"
     }).success(function(data){
       if(data){
         vm.currentUser = data;
@@ -69,7 +69,7 @@ app.controller('userController', function(userFactory, $http, $scope, $state){
       var newScore = vm.currentUser.points.expression + 1
       $http({
         method: 'PUT',
-        url: "http://localhost:3000/users/" + vm.currentUser.username + "/edit",
+        url: "http://ec2-52-36-162-16.us-west-2.compute.amazonaws.com:3000/users/" + vm.currentUser.username + "/edit",
         data:{
           points: {
             expression: newScore,
@@ -96,7 +96,7 @@ app.controller('userController', function(userFactory, $http, $scope, $state){
       var newScore = vm.currentUser.points.equation + 1
       $http({
         method: 'PUT',
-        url: "http://localhost:3000/users/" + vm.currentUser.username + "/edit",
+        url: "http://ec2-52-36-162-16.us-west-2.compute.amazonaws.com:3000/users/" + vm.currentUser.username + "/edit",
         data:{
           points: {
             equation: newScore,

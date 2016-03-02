@@ -12,7 +12,7 @@ angular.module("userService", [])
 
   // Grabs all users from the API
   factory.all = function(){
-    return $http.get('http://localhost:3000/users');
+    return $http.get('http://ec2-52-36-162-16.us-west-2.compute.amazonaws.com:3000/users');
   }
 
   return factory;

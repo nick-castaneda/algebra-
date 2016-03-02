@@ -12,7 +12,7 @@ angular.module("satService", [])
 
   // Grabs all sat problems from the API
   factory.all = function(){
-    return $http.get('http://localhost:3000/sat');
+    return $http.get('http://ec2-52-36-162-16.us-west-2.compute.amazonaws.com:3000/sat');
   }
 
   return factory;
