@@ -7,6 +7,7 @@
   <link href='https://fonts.googleapis.com/css?family=Droid+Sans:700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="stylesheets/app.css">
 
+  <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 
@@ -74,7 +75,9 @@
   <!-- Modal for registering with form -->
   <div id="registerModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
     <h2 id="modalTitle">Register</h2>
-    <form ng-submit="users.register(users.newUser.username, users.newUser.password, users.newUser.url)">
+    <form ng-submit="users.register(users.newUser.email, users.newUser.username, users.newUser.password, users.newUser.url)">
+      <label for="email">Email:</label>
+      <input ng-model="users.newUser.email">
       <label for="username">Username:</label>
       <input ng-model="users.newUser.username">
       <label for="password">Password:</label>

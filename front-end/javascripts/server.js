@@ -39,15 +39,8 @@ function MainRouter($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise("/");
 }
 
-
-// app.filter('sup', function () {
-//     return function (text, length) {
-//         if (text.length > length) {
-//             return text.substr(0, length) + "<a href='#'>...</a>";
-//         }
-//         return text;
-//     }
-// })
+// Firebase code
+var database = new Firebase("https://algebra.firebaseio.com/");
 
 
 
