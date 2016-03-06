@@ -6,34 +6,27 @@
 // $http
 app.controller('userController', function(userFactory, $http, $scope, $state){
   var vm = this;
-  vm.users = [];
 
-  // Run the 'all' function from the userFactory and set the response
-  // to an array named users
-  // userFactory.all().success(function(data){
-  //   vm.users = data;
-  //   for(i=0; i<vm.users.length; i++){
-  //     vm.users[i].level = Math.floor( Math.log(vm.users[i].points.equation + vm.users[i].points.expression + vm.users[i].points.sat + 1) / Math.log(2) )
-  //   }
-  // })
-
-  database.child('users').on("value", function(snapshot) {
-    var users = snapshot.val();
-    for (var property in users) {
-      if (users.hasOwnProperty(property)) {
-        vm.users.push(users[property]);
+  // Grab all users
+  database.child('users').on("value",
+    function(snapshot) {
+      vm.users = [];
+      var users = snapshot.val();
+      for (var property in users) {
+        if (users.hasOwnProperty(property)) {
+          vm.users.push(users[property]);
+        }
       }
+      for(var i=0; i<vm.users.length; i++){
+        vm.users[i].level = Math.floor( Math.log(vm.users[i].points.equation + vm.users[i].points.expression + vm.users[i].points.sat + 1) / Math.log(2) )
+        // Include current user update
+      }
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
     }
-    console.log(vm.users)
-  }, function (errorObject) {
-    console.log("The read failed: " + errorObject.code);
-  });
+  );
 
-  ///// Should be in a factory, but can't make it work.
-  // Set up a new user model.
-  // When the register form is submited, the attributes are passed to
-  // the backend api through the post method.
-  ////// change success callback function
+  // Register users
   vm.newUser = {username: "", password: "", url: ""}
   vm.register = function(email, username, pw, url){
     database.createUser({
@@ -43,62 +36,45 @@ app.controller('userController', function(userFactory, $http, $scope, $state){
       if (error) {
         console.log("Error creating user:", error);
       } else {
-
+        database.child('users').push({
+          email: email,
+          username: username,
+          imageURL: url,
+          points: {
+            equation: 0,
+            expression: 0,
+            sat: 0
+          }
+        })
         console.log("Successfully created user account with uid:", userData.uid);
       }
     });
   }
-  //     console.log("hi");
-  //   $http({
-  //     method: 'POST',
-  //     url: "http://ec2-52-36-162-16.us-west-2.compute.amazonaws.com:3000/users/create",
-  //     data:{
-  //       username: username,
-  //       password: pw,
-  //       picUrl: url
-  //     }
-  //   }).success(function(){
-  //     vm.login(username, pw);
-  //     userFactory.all().success(function(data){
-  //       vm.users = data;
-  //       for(i=0; i<vm.users.length; i++){
-  //         vm.users[i].level = Math.floor( Math.log(vm.users[i].points.equation + vm.users[i].points.expression + vm.users[i].points.sat + 1) / Math.log(2) )
-  //       }
-  //     });
-  //     $state.go('profile');
-  //   })
-  // }
+
 
   // Login
   vm.signedIn = false;
   vm.currentUser = {username: ""}
   $scope.$watch("vm.currentUser")
-  vm.login = function (username, pw) {
-    ref.authWithPassword({
-      email    : "bobtony@firebase.com",
-      password : "correcthorsebatterystaple"
+  vm.login = function (email, pw) {
+    database.authWithPassword({
+      email    : email,
+      password : pw
     }, function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
       } else {
-        console.log("Authenticated successfully with payload:", authData);
+        for (var i = 0; i < vm.users.length; i++){
+          if(vm.users[i].email == email) vm.currentUser = vm.users[i]
+        }
+        $state.go('profile');
+        console.log(vm.currentUser);
       }
     });
   }
-  //   $http({
-  //     method: 'GET',
-  //     url: "http://ec2-52-36-162-16.us-west-2.compute.amazonaws.com:3000/users/" + username + "/" + pw + "/show"
-  //   }).success(function(data){
-  //     if(data){
-  //       vm.currentUser = data;
-  //       vm.currentUser.level = Math.floor( Math.log(vm.currentUser.points.equation + vm.currentUser.points.expression + vm.currentUser.points.sat + 1) / Math.log(2) )
-  //       vm.showUserLinks = true;
-  //       vm.signedIn = true;
-  //       if(vm.currentUser.level) $state.go('profile');
-  //     }
-  //   })
-  // }
 
+
+  // Fix Score raising
   $scope.$on('raise-exp-score', function(event, args) {
     if(vm.currentUser.username){
 
@@ -153,7 +129,7 @@ app.controller('userController', function(userFactory, $http, $scope, $state){
 
   })
 
-
+  // Fix Logout
   vm.logout = function(){
     vm.currentUser = {username: ""};
     vm.signedIn = false;

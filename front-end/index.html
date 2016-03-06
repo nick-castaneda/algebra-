@@ -13,7 +13,6 @@
 
   <script src="javascripts/server.js"></script>
   <script src="javascripts/userController.js"></script>
-  <script src="javascripts/userService.js"></script>
   <script src="javascripts/equationController.js"></script>
   <script src="javascripts/equationSolverLogic.js"></script>
   <script src="javascripts/expressionController.js"></script>
@@ -60,9 +59,9 @@
   <div id="loginModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
     <h2 id="modalTitle">Login</h2>
     <p class="lead">If you have an acount, login. Otherwise, <a href="#" data-reveal-id="registerModal">Register</a></p>
-    <form ng-submit="users.login(users.loginUser.username, users.loginUser.password)">
-      <label for="username">Username:</label>
-      <input type="text" ng-model="users.loginUser.username">
+    <form ng-submit="users.login(users.loginUser.email, users.loginUser.password)">
+      <label for="email">Email:</label>
+      <input type="text" ng-model="users.loginUser.email">
       <label for="password">Password:</label>
       <input type="password" ng-model="users.loginUser.password">
       <!-- <div class="logreg close-reveal-modal"> -->
