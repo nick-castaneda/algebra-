@@ -4,7 +4,7 @@
 
 // Sets up an angular module called 'algebra' and inserts the ui-router,
 // the user and sat services, and the equation logic.
-var app = angular.module('algebra', ['ui.router', 'userService', 'satService', 'equationSolverLogic', 'expressionSimplifierLogic'])
+var app = angular.module('algebra', ['ui.router', 'satService', 'equationSolverLogic', 'expressionSimplifierLogic'])
   .config(MainRouter)
 
 // Routing for the entire application. Each route is set to the root url
