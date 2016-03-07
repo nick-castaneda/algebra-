@@ -44,15 +44,15 @@ app.controller('userController', function($http, $scope, $state){
             expression: 0,
             sat: 0
           }
-        }).key()
+        }).key();
         database.child('users').child(route).update({
-          route: route
-        })
+          "route": route
+        });
         database.child('users').child(route).on("value",
           function(snapshot){
             vm.currentUser = snapshot.val();
-          }
-        )
+          });
+        vm.signedIn = true;
       }
     });
   }
@@ -75,66 +75,36 @@ app.controller('userController', function($http, $scope, $state){
           if(vm.users[i].email == email) vm.currentUser = vm.users[i]
         }
         // $state.go('profile');
-        console.log(vm.currentUser);
       }
     });
   }
 
 
-  // Fix Score raising
-  // $scope.$on('raise-exp-score', function(event, args) {
-  //   if(vm.currentUser.username){
+  // Raises expression score
+  $scope.$on('raise-exp-score', function(event, args) {
+    if(vm.currentUser.username){
+      var newScore = vm.currentUser.points.expression + 1
+      database.child('users').child(vm.currentUser.route).update({
+        "points/expression": newScore
+      })
+      vm.currentUser.points.expression = newScore;
+      vm.currentUser.level = Math.floor( Math.log(vm.currentUser.points.equation + vm.currentUser.points.expression + vm.currentUser.points.sat + 1) / Math.log(2) );
+      alert('success')
+    }
+  })
 
-  //     var newScore = vm.currentUser.points.expression + 1
-  //     $http({
-  //       method: 'PUT',
-  //       url: "http://ec2-52-36-162-16.us-west-2.compute.amazonaws.com:3000/users/" + vm.currentUser.username + "/edit",
-  //       data:{
-  //         points: {
-  //           expression: newScore,
-  //           equation: vm.currentUser.points.equation
-  //         }
-  //       }
-  //     }).success(function(data){
-
-  //       userFactory.all().success(function(data){
-  //         vm.users = data;
-  //         for(i=0; i<vm.users.length; i++){
-  //           vm.users[i].level = Math.floor( Math.log(vm.users[i].points.equation + vm.users[i].points.expression + vm.users[i].points.sat + 1) / Math.log(2) )
-  //         }
-  //       })
-  //       vm.login(vm.currentUser.username, vm.currentUser.password);
-  //     })
-  //   }
-
-  // })
-
-  // $scope.$on('raise-eq-score', function(event, args) {
-  //   if(vm.currentUser.username){
-
-  //     var newScore = vm.currentUser.points.equation + 1
-  //     $http({
-  //       method: 'PUT',
-  //       url: "http://ec2-52-36-162-16.us-west-2.compute.amazonaws.com:3000/users/" + vm.currentUser.username + "/edit",
-  //       data:{
-  //         points: {
-  //           equation: newScore,
-  //           expression: vm.currentUser.points.expression
-  //         }
-  //       }
-  //     }).success(function(data){
-  //       console.log("success")
-  //       userFactory.all().success(function(data){
-  //         vm.users = data;
-  //         for(i=0; i<vm.users.length; i++){
-  //           vm.users[i].level = Math.floor( Math.log(vm.users[i].points.equation + vm.users[i].points.expression + vm.users[i].points.sat + 1) / Math.log(2) )
-  //         }
-  //       })
-  //       vm.login(vm.currentUser.username, vm.currentUser.password);
-  //     })
-  //   }
-
-  // })
+  // Raises equation score
+  $scope.$on('raise-eq-score', function(event, args) {
+    if(vm.currentUser.username){
+      var newScore = vm.currentUser.points.equation + 1
+      database.child('users').child(vm.currentUser.route).update({
+        "points/equation": newScore
+      })
+      vm.currentUser.points.equation = newScore;
+      vm.currentUser.level = Math.floor( Math.log(vm.currentUser.points.equation + vm.currentUser.points.expression + vm.currentUser.points.sat + 1) / Math.log(2) );
+      alert('success')
+    }
+  })
 
   // Fix Logout
   vm.logout = function(){
