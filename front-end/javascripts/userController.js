@@ -27,7 +27,6 @@ app.controller('userController', function($http, $scope, $state){
   );
 
   // Register users
-  vm.newUser = {username: "", password: "", url: ""}
   vm.register = function(email, username, pw, url){
     database.createUser({
       email: email,
@@ -36,18 +35,24 @@ app.controller('userController', function($http, $scope, $state){
       if (error) {
         console.log("Error creating user:", error);
       } else {
-        database.child('users').push({
+        var route = database.child('users').push({
           email: email,
           username: username,
-          imageURL: url,
+          imageURL: url ? url : "http://bestpuppyfoodbrands.com/wp-content/uploads/2015/02/happy-puppy-201x300.png",
           points: {
             equation: 0,
             expression: 0,
             sat: 0
           }
+        }).key()
+        database.child('users').child(route).update({
+          route: route
         })
-        // Make registered user the current user
-        console.log(userData);
+        database.child('users').child(route).on("value",
+          function(snapshot){
+            vm.currentUser = snapshot.val();
+          }
+        )
       }
     });
   }
@@ -65,12 +70,12 @@ app.controller('userController', function($http, $scope, $state){
       if (error) {
         console.log("Login Failed!", error);
       } else {
+        vm.signedIn = true;
         for (var i = 0; i < vm.users.length; i++){
           if(vm.users[i].email == email) vm.currentUser = vm.users[i]
         }
-        // vm.currentUser.databaseid = authData.
         // $state.go('profile');
-        console.log(authData);
+        console.log(vm.currentUser);
       }
     });
   }
